@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const crypto = require("crypto");
-const uuid = require("uuid/v1");
+const { v1 } = require("uuid");
 
 const userSchema = new mongoose.Schema(
   {
@@ -24,20 +24,19 @@ const userSchema = new mongoose.Schema(
     about: {
       type: String,
       trim: true,
-      required: false,
     },
-    salt: {
-      type: String,
-      role: {
-        type: Number,
-        default: 0,
-      },
-      history: {
-        type: Array,
-        default: [],
-      },
+    salt: String,
+
+    role: {
+      type: Number,
+      default: 0,
+    },
+    history: {
+      type: Array,
+      default: [],
     },
   },
+
   { timestamps: true }
 );
 
@@ -46,7 +45,7 @@ userSchema
   .virtual("password")
   .set(function (password) {
     this._password = password;
-    this.salt = uuid();
+    this.salt = v1();
     this.hashed_password = this.encryptPassword(password);
   })
   .get(function () {
