@@ -27,7 +27,7 @@ exports.errorHandler = (error) => {
     switch (error.code) {
       case 11000:
       case 11001:
-        message = uniqueMessage(errro);
+        message = uniqueMessage(error);
         break;
       default:
         message = "Something went wrong";
