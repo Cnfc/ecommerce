@@ -1,43 +1,51 @@
 const mongoose = require("mongoose");
-const crypto = require("crypto");
-const { v1 } = require("uuid");
 
-const userSchema = new mongoose.Schema(
+const { ObjectId } = mongoose.Schema;
+
+const productSchema = new mongoose.Schema(
   {
     name: {
       type: String,
       trim: true,
       required: true,
-      maxlength: 32,
+      maxlength: 200,
     },
-    email: {
-      type: String,
-      trim: true,
-      required: true,
-      // maxlength: 32,
-      unique: 32,
-    },
-    hashed_password: {
-      type: String,
-      required: true,
-    },
-    about: {
-      type: String,
-      trim: true,
-    },
-    salt: String,
 
-    role: {
-      type: Number,
-      default: 0,
+    description: {
+      type: String,
+      required: true,
+      maxlength: 2000,
     },
-    history: {
-      type: Array,
-      default: [],
+
+    price: {
+      type: Number,
+      required: true,
+      maxlength: 32,
+      trim: true,
+    },
+
+    category: {
+      type: ObjectId,
+      ref: "Category",
+      required: true,
+    },
+
+    quantity: {
+      type: Number,
+    },
+
+    photo: {
+      data: Buffer,
+      contentType: String,
+    },
+
+    shipping: {
+      type: Boolean,
+      required: false,
     },
   },
 
   { timestamps: true }
 );
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Product", productSchema);
