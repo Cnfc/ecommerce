@@ -1,7 +1,5 @@
 "use strict";
 
-//
-
 const uniqueMessage = (error) => {
   let output;
 
