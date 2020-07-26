@@ -75,7 +75,7 @@ exports.create = (req, res) => {
   });
 };
 
-exports.remove = (req, res, next) => {
+exports.remove = (req, res) => {
   let product = req.product;
   product.remove((err, deletedProduct) => {
     if (err) {
@@ -86,6 +86,59 @@ exports.remove = (req, res, next) => {
     res.json({
       deletedProduct,
       message: "Product deleted successfully",
+    });
+  });
+};
+
+exports.update = (req, res) => {
+  let form = new formidable.IncomingForm();
+  form.keepExtensions = true;
+  form.parse(req, (err, fields, files) => {
+    if (err) {
+      return res.status(400).json({
+        error: "Image could not be uploaded",
+      });
+    }
+
+    // Checking Product fields
+    const { name, description, price, category, quantity, shipping } = fields;
+
+    if (
+      !name ||
+      !description ||
+      !price ||
+      !category ||
+      !quantity ||
+      !shipping
+    ) {
+      return res.status(400).json({
+        error:
+          "All fields  are required: name, description, price, category, quantity, shipping",
+      });
+    }
+
+    let product = req.product;
+    product = _.extend(product, fields);
+
+    if (files.photo) {
+      console.log("Added Files Photo", files.photo);
+      if (files.photo.size > 100000) {
+        return res.status(400).json({
+          error: "Image size is over 1mb",
+        });
+      }
+      product.photo.data = fs.readFileSync(files.photo.path);
+      product.photo.contentType = files.photo.type;
+    }
+
+    product.save((err, result) => {
+      if (err) {
+        return res.status(400).json({
+          error: errorHandler(error),
+        });
+      }
+
+      res.json(result);
     });
   });
 };
