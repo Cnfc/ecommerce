@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/courses", (req, res) => {
+router.get("/courses", (req, res, next) => {
   console.log("Authenticating...");
-  res.send("NEW HELLLO");
+  next();
 });
 
 module.exports = router;
