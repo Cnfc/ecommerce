@@ -9,7 +9,7 @@ const config = require("config");
 const debug = require("debug")("app:startup");
 require("dotenv").config();
 
-const Courses = require("./models/course");
+const Product = require("./models/product");
 // import Routes
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
@@ -62,47 +62,12 @@ app.use("/api", productRoutes);
 
 app.use("/api", logRouter);
 
-app.use("/api/courses", courses);
-
-async function createCourse() {
-  const course = new Courses({
-    name: "Angular  Sourse Course",
-    category: "Web",
-    author: "Mosh",
-    tags: ["frontend"],
-    isPublished: true,
-    price: 15.8,
-  });
-
-  try {
-    const res = await course.save();
-    console.log(res);
-  } catch (ex) {
-    for (field in ex.errors) console.log(ex.errors[filed].message);
-  }
-}
-
-// createCourse();
-
-async function getCourse() {
-  const courses = await Courses.find().select({ author: 1 });
-  console.log(courses);
-}
-
-// getCourse();
-
-// async function updateCourse(id) {
-//   const course = await Courses.findByIdAndUpdate(id, {
-//     $set: {
-//       author: "Stanislav",
-//       name: "Learn Reactjs",
-//     },
-//   });
-//   console.log(course);
+// async function getProducts() {
+//   const courses = await Product.find().select(["name", "price", "description"]);
+//   console.log(courses);
 // }
 
-// updateCourse("5f354469e633d15ae2a034ac");
-
+// getProducts();
 // =============================================
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
