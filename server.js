@@ -7,6 +7,8 @@ const expressValidator = require("express-validator");
 const helmet = require("helmet");
 const config = require("config");
 const debug = require("debug")("app:startup");
+const cors = require("cors");
+
 require("dotenv").config();
 
 const Product = require("./models/product");
@@ -53,6 +55,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(expressValidator());
 app.use(helmet());
+app.use(cors());
 
 // ROUTES
 app.use("/api", authRoutes);

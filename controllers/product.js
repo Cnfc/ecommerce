@@ -6,6 +6,7 @@ const Product = require("../models/product");
 
 const { errorHandler } = require("../helpers/dbErrorHandler");
 const { parse } = require("path");
+const category = require("../models/category");
 
 exports.productById = (req, res, next, id) => {
   Product.findById(id).exec((err, product) => {
@@ -162,6 +163,82 @@ exports.list = (req, res) => {
           error: "Products not found",
         });
       }
-      res.send(products);
+      res.json(products);
     });
+};
+
+exports.listReleated = (req, res) => {
+  let limit = req.query.limit ? parseInt(req.query.limit) : 7;
+
+  Product.find({ _id: { $ne: req.product }, category: req.product.category })
+    .limit(limit)
+    .populate("category", "_id name")
+    .exec((err, products) => {
+      if (err) {
+        return res.status(400).json({
+          error: "Products not found",
+        });
+      }
+      res.json(products);
+    });
+};
+
+exports.listCategories = (req, res) => {
+  Product.distinct("category", {}, (err, categories) => {
+    if (err) {
+      return res.status(400).json({
+        error: "Category not found",
+      });
+    }
+    res.json(categories);
+  });
+};
+
+// Controllers
+exports.listBySearch = (req, res) => {
+  let order = req.query.order ? req.query.order : "desc";
+  let sortBy = req.query.sortBy ? req.query.sortBy : "_id";
+  let limit = req.query.limit ? parseInt(req.query.limit) : 100;
+  let skip = parseInt(req.body.skip);
+  let findArgs = {};
+
+  // Order, SortBy, limit, skip, req.body.filters
+
+  for (let key in req.body.filters) {
+    if (req.body.filters[key].length > 0) {
+      if (key === "price") {
+        findArgs[key] = {
+          $gte: req.body.filters[key][0],
+          $lte: req.body.filters[key][1],
+        };
+      } else {
+        findArgs[key] = req.body.filters[key];
+      }
+    }
+  }
+
+  Product.find(findArgs)
+    .select("-photo")
+    .populate("category")
+    .sort([[sortBy, order]])
+    .skip(skip)
+    .limit(limit)
+    .exec((err, data) => {
+      if (err) {
+        return res.status(400).send(err);
+      }
+
+      res.json({
+        size: data.length,
+        data,
+      });
+    });
+};
+
+exports.photo = (req, res, next) => {
+  if (req.product.photo.data) {
+    res.set("Content-Type", req.product.photo.contentType);
+    return res.send(req.product.photo.data);
+  }
+  next();
 };
