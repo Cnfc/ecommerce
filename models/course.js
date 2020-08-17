@@ -24,7 +24,7 @@ const courseSchema = new mongoose.Schema({
     get: (v) => Math.round(v),
     set: (v) => Math.round(v),
   },
-  author: String,
+  authors: [authorSchema],
   tags: [String],
   date: { type: Date, default: Date.now },
 });
