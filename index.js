@@ -11,17 +11,11 @@ const cors = require("cors");
 
 require("dotenv").config();
 
-// const Product = require("./models/product");
-const Movies = require("./modelMoovies");
-const Genres = require("./modelGenres");
+const Movies = require("./sobes/model/modelMoovies");
+const Genres = require("./sobes/model/modelGenres");
 
-// import Routes
-// const authRoutes = require("./routes/auth");
-// const userRoutes = require("./routes/user");
-// const categoryRoutes = require("./routes/category");
-// const productRoutes = require("./routes/product");
-// const logRouter = require("./routes/logger");
-// const courses = require("./routes/courses");
+const movies = require("./sobes/routers/movies");
+const tasks = require("./sobes/routers/tasks");
 // APP
 const app = express();
 // =============================================
@@ -51,7 +45,8 @@ app.use(cors());
 // app.use("/api", categoryRoutes);
 // app.use("/api", productRoutes);
 
-// app.use("/api", logRouter);
+app.use("/api", movies);
+app.use("/api", tasks);
 
 // NODE JS COURSE
 
@@ -109,9 +104,11 @@ async function listMovies() {
   console.log(movies);
 }
 
+// Routes
+
 // createGenres("Fantasy");
 // createMovies("SAO", "5f3a886f807e4d41a459ef39", 0, 0);
-listMovies();
+// listMovies();
 // getProducts();
 // =============================================
 const port = process.env.PORT || 8000;
