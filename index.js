@@ -111,7 +111,7 @@ async function listMovies() {
 // listMovies();
 // getProducts();
 // =============================================
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 7999;
 app.listen(port, () => {
   console.log(`Server is working on port: ${port}`);
 });
