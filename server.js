@@ -158,7 +158,7 @@ createCourse("Node Course", [
 
 // getProducts();
 // =============================================
-const port = process.env.PORT || 6900;
+const port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log(`Server is working on port: ${port}`);
 });

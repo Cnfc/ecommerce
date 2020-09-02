@@ -9,8 +9,8 @@ const { parse } = require("path");
 const category = require("../models/category");
 
 exports.productById = (req, res, next, id) => {
-  Product.findById(id).exec((err, product) => {
-    if (err || !product) {
+  Product.findById(id).exec((error, product) => {
+    if (error || !product) {
       return res.status(400).json({
         error: "Product not found",
       });
@@ -28,8 +28,8 @@ exports.read = (req, res) => {
 exports.create = (req, res) => {
   let form = new formidable.IncomingForm();
   form.keepExtensions = true;
-  form.parse(req, (err, fields, files) => {
-    if (err) {
+  form.parse(req, (error, fields, files) => {
+    if (error) {
       return res.status(400).json({
         error: "Image could not be uploaded",
       });
@@ -65,8 +65,8 @@ exports.create = (req, res) => {
       product.photo.contentType = files.photo.type;
     }
 
-    product.save((err, result) => {
-      if (err) {
+    product.save((error, result) => {
+      if (error) {
         return res.status(400).json({
           error: errorHandler(error),
         });
@@ -79,8 +79,8 @@ exports.create = (req, res) => {
 
 exports.remove = (req, res) => {
   let product = req.product;
-  product.remove((err, deletedProduct) => {
-    if (err) {
+  product.remove((error, deletedProduct) => {
+    if (error) {
       return res.status(400).json({
         error: errorHandler(error),
       });
@@ -95,8 +95,8 @@ exports.remove = (req, res) => {
 exports.update = (req, res) => {
   let form = new formidable.IncomingForm();
   form.keepExtensions = true;
-  form.parse(req, (err, fields, files) => {
-    if (err) {
+  form.parse(req, (error, fields, files) => {
+    if (error) {
       return res.status(400).json({
         error: "Image could not be uploaded",
       });
@@ -133,8 +133,8 @@ exports.update = (req, res) => {
       product.photo.contentType = files.photo.type;
     }
 
-    product.save((err, result) => {
-      if (err) {
+    product.save((error, result) => {
+      if (error) {
         return res.status(400).json({
           error: errorHandler(error),
         });
@@ -157,8 +157,8 @@ exports.list = (req, res) => {
     .populate("category")
     .sort([[sortBy, order]])
     .limit(limit)
-    .exec((err, products) => {
-      if (err) {
+    .exec((error, products) => {
+      if (error) {
         return res.status(400).json({
           error: "Products not found",
         });
@@ -173,8 +173,8 @@ exports.listReleated = (req, res) => {
   Product.find({ _id: { $ne: req.product }, category: req.product.category })
     .limit(limit)
     .populate("category", "_id name")
-    .exec((err, products) => {
-      if (err) {
+    .exec((error, products) => {
+      if (error) {
         return res.status(400).json({
           error: "Products not found",
         });
@@ -184,8 +184,8 @@ exports.listReleated = (req, res) => {
 };
 
 exports.listCategories = (req, res) => {
-  Product.distinct("category", {}, (err, categories) => {
-    if (err) {
+  Product.distinct("category", {}, (error, categories) => {
+    if (error) {
       return res.status(400).json({
         error: "Category not found",
       });
@@ -223,9 +223,9 @@ exports.listBySearch = (req, res) => {
     .sort([[sortBy, order]])
     .skip(skip)
     .limit(limit)
-    .exec((err, data) => {
-      if (err) {
-        return res.status(400).send(err);
+    .exec((error, data) => {
+      if (error) {
+        return res.status(400).send(error);
       }
 
       res.json({

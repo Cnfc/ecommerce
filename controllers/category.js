@@ -4,8 +4,8 @@ const { errorHandler } = require("../helpers/dbErrorHandler");
 exports.create = (req, res) => {
   const category = new Category(req.body);
 
-  category.save((err, data) => {
-    if (err) {
+  category.save((error, data) => {
+    if (error) {
       return res.status(400).json({
         error: "Category does not exist",
       });
@@ -15,8 +15,8 @@ exports.create = (req, res) => {
 };
 
 exports.categoryById = (req, res, next, id) => {
-  Category.findById(id).exec((err, category) => {
-    if (err || !category) {
+  Category.findById(id).exec((error, category) => {
+    if (error || !category) {
       return res.status(400).json({
         error: errorHandler(err),
       });
@@ -33,10 +33,10 @@ exports.read = (req, res) => {
 exports.update = (req, res) => {
   const category = req.category;
   category.name = req.body.name;
-  category.save((err, data) => {
-    if (err) {
+  category.save((error, data) => {
+    if (error) {
       return res.status(400).json({
-        error: errorHandler(err),
+        error: errorHandler(error),
       });
     }
     res.json(data);
@@ -44,10 +44,10 @@ exports.update = (req, res) => {
 };
 
 exports.list = (req, res) => {
-  Category.find().exec((err, data) => {
-    if (err) {
+  Category.find().exec((error, data) => {
+    if (error) {
       return res.status(400).json({
-        error: errorHandler(err),
+        error: errorHandler(error),
       });
     }
 
@@ -57,8 +57,8 @@ exports.list = (req, res) => {
 
 exports.remove = (req, res) => {
   let category = req.category;
-  category.remove((err, removedCategory) => {
-    if (err) {
+  category.remove((error, removedCategory) => {
+    if (error) {
       return res.status(400).json({
         error: errorHandler(error),
       });

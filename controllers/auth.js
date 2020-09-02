@@ -7,9 +7,9 @@ const { errorHandler } = require("../helpers/dbErrorHandler");
 exports.signup = (req, res) => {
   // console.log(req.body);
   const user = new User(req.body);
-  user.save((err, user) => {
-    if (err) {
-      return res.status(400).json({ err: errorHandler(err) });
+  user.save((error, user) => {
+    if (error) {
+      return res.status(400).json({ error: errorHandler(error) });
     }
     user.salt = undefined;
     user.hashed_password = undefined;
@@ -23,10 +23,10 @@ exports.signup = (req, res) => {
 exports.signin = (req, res) => {
   const { email, password } = req.body;
 
-  User.findOne({ email }, (err, user) => {
-    if (err || !user) {
+  User.findOne({ email }, (error, user) => {
+    if (error || !user) {
       return res.status(400).json({
-        err: "User is not exist",
+        error: "User is not exist",
       });
     }
     //

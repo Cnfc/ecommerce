@@ -11,6 +11,13 @@ const cors = require("cors");
 
 require("dotenv").config();
 
+const authRoutes = require("./routes/auth");
+const userRoutes = require("./routes/user");
+const categoryRoutes = require("./routes/category");
+const productRoutes = require("./routes/product");
+const logRouter = require("./routes/logger");
+const courses = require("./routes/courses");
+
 const Movies = require("./sobes/model/modelMoovies");
 const Genres = require("./sobes/model/modelGenres");
 
@@ -40,10 +47,10 @@ app.use(helmet());
 app.use(cors());
 
 // ROUTES
-// app.use("/api", authRoutes);
-// app.use("/api", userRoutes);
-// app.use("/api", categoryRoutes);
-// app.use("/api", productRoutes);
+app.use("/api", authRoutes);
+app.use("/api", userRoutes);
+app.use("/api", categoryRoutes);
+app.use("/api", productRoutes);
 
 app.use("/api", movies);
 app.use("/api", tasks);

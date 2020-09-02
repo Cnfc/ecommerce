@@ -1,8 +1,8 @@
 const User = require("../models/user");
 
 exports.userById = (req, res, next, id) => {
-  User.findById(id).exec((err, user) => {
-    if (err || !user) {
+  User.findById(id).exec((error, user) => {
+    if (error || !user) {
       return res.status(400).json({
         error: "User not found. ",
       });
@@ -24,8 +24,8 @@ exports.update = (req, res) => {
     { _id: req.profile._id },
     { $set: req.body },
     { new: true },
-    (err, user) => {
-      if (err) {
+    (error, user) => {
+      if (error) {
         return res.status(400).json({
           error: "You are not auth to perform this action.",
         });
