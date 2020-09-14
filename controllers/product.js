@@ -196,9 +196,9 @@ exports.listCategories = (req, res) => {
 
 // Controllers
 exports.listBySearch = (req, res) => {
-  let order = req.query.order ? req.query.order : "desc";
-  let sortBy = req.query.sortBy ? req.query.sortBy : "_id";
-  let limit = req.query.limit ? parseInt(req.query.limit) : 100;
+  let order = req.body.order ? req.body.order : "desc";
+  let sortBy = req.body.sortBy ? req.body.sortBy : "_id";
+  let limit = req.body.limit ? parseInt(req.body.limit) : 100;
   let skip = parseInt(req.body.skip);
   let findArgs = {};
 
