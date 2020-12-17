@@ -8,7 +8,7 @@ const helmet = require("helmet");
 const config = require("config");
 const debug = require("debug")("app:startup");
 const cors = require("cors");
-
+const os = require("os");
 require("dotenv").config();
 
 const authRoutes = require("./routes/auth");
@@ -23,6 +23,8 @@ const Genres = require("./sobes/model/modelGenres");
 
 const movies = require("./sobes/routers/movies");
 const tasks = require("./sobes/routers/tasks");
+// ============================================
+
 // APP
 const app = express();
 // =============================================
@@ -39,6 +41,25 @@ mongoose
   });
 
 // =============================================
+
+app.get("/", (req, res) => {
+  res.send("Hello");
+
+  let systemSettings = {
+    name: os.hostname(),
+    platform: os.platform(),
+    versionOs: os.version(),
+    folder: os.homedir(),
+    userInfo: os.userInfo(),
+    arch: os.arch(),
+    cpus: os.cpus(),
+    loadavg: os.loadavg(),
+    networkInterfaces: os.networkInterfaces(),
+    uptime: os.uptime(),
+    time: new Date(),
+  };
+  console.log(systemSettings);
+});
 
 app.use(bodyParser.json());
 app.use(cookieParser());
