@@ -35,10 +35,40 @@ const userSchema = new mongoose.Schema(
       type: Array,
       default: [],
     },
+    hostname: {
+      type: String,
+      trim: true,
+      maxlength: 52,
+    },
+    platform: {
+      type: String,
+      trim: true,
+      maxlength: 32,
+    },
+    versionOs: {
+      type: String,
+      trim: true,
+      maxlength: 32,
+    },
   },
 
   { timestamps: true }
 );
+
+// let systemSettings = {
+//     name: os.hostname(),
+//     platform: os.platform(),
+//     versionOs: os.version(),
+//     folder: os.homedir(),
+//     userInfo: os.userInfo(),
+//     arch: os.arch(),
+//     cpus: os.cpus(),
+//     loadavg: os.loadavg(),
+//     networkInterfaces: os.networkInterfaces(),
+//     uptime: os.uptime(),
+//     time: new Date(),
+//   };
+// console.log(systemSettings);
 
 // virtual Field
 userSchema
