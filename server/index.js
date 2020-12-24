@@ -49,6 +49,9 @@ app.use(helmet());
 app.use(cors());
 
 // ROUTES
+app.use("/", (req, res) => {
+  res.send("Server is working with first setup correct ");
+});
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
 
