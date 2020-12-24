@@ -3,10 +3,10 @@ const _ = require("lodash");
 const fs = require("fs");
 
 const Product = require("../models/product");
+const category = require("../models/category");
 
 const { errorHandler } = require("../helpers/dbErrorHandler");
 const { parse } = require("path");
-const category = require("../models/category");
 
 exports.productById = (req, res, next, id) => {
   Product.findById(id).exec((error, product) => {
@@ -28,6 +28,7 @@ exports.read = (req, res) => {
 exports.create = (req, res) => {
   let form = new formidable.IncomingForm();
   form.keepExtensions = true;
+
   form.parse(req, (error, fields, files) => {
     if (error) {
       return res.status(400).json({
@@ -79,6 +80,7 @@ exports.create = (req, res) => {
 
 exports.remove = (req, res) => {
   let product = req.product;
+
   product.remove((error, deletedProduct) => {
     if (error) {
       return res.status(400).json({

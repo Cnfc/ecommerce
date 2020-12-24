@@ -49,8 +49,9 @@ app.use(helmet());
 app.use(cors());
 
 // ROUTES
-app.use("/api", userRoutes);
 app.use("/api", authRoutes);
+app.use("/api", userRoutes);
+
 app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
 

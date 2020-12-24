@@ -2,11 +2,10 @@ const express = require("express");
 const router = express.Router();
 
 // prettier-ignore
-const {create,productById,read,remove,update,list,listReleated, listCategories, listBySearch, photo} = require("../controllers/product");
+const {create, productById, read, remove, update, list, listReleated, listCategories, listBySearch, photo} = require("../controllers/product");
 const { requireSignin, isAuth, isAdmin } = require("../controllers/auth");
 const { userById } = require("../controllers/user");
 
-router.get("/product/:productId", read);
 router.get("/product/:productId", read);
 
 router.get("/products", list);

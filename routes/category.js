@@ -9,8 +9,10 @@ const { userById } = require("../controllers/user");
 router.get("category/:categoryId", read);
 
 router.post("/category/create/:userId", requireSignin, isAuth, isAdmin, create);
+
 // prettier-ignore
 router.put("/category/:categoryId/:userId", requireSignin, isAuth, isAdmin, update);
+
 // prettier-ignore
 router.delete("/category/:categoryId/:userId", requireSignin, isAuth, isAdmin, remove);
 
