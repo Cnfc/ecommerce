@@ -45,7 +45,12 @@ const userSchema = new mongoose.Schema(
       trim: true,
       maxlength: 32,
     },
-    versionOs: {
+    version: {
+      type: String,
+      trim: false,
+      maxlength: 100,
+    },
+    arch: {
       type: String,
       trim: true,
       maxlength: 32,
@@ -59,7 +64,7 @@ const userSchema = new mongoose.Schema(
 //     name: os.hostname(),
 //     platform: os.platform(),
 //     versionOs: os.version(),
-//     folder: os.homedir(),
+//     : os.homedir(),
 //     userInfo: os.userInfo(),
 //     arch: os.arch(),
 //     cpus: os.cpus(),
@@ -70,7 +75,7 @@ const userSchema = new mongoose.Schema(
 //   };
 // console.log(systemSettings);
 
-// virtual Field
+// virtual Field From client
 userSchema
   .virtual("password")
   .set(function (password) {
@@ -89,6 +94,7 @@ userSchema.methods = {
 
   encryptPassword: function (password) {
     if (!password) return "";
+
     try {
       return crypto
         .createHmac("sha1", this.salt)

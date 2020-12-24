@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send("Router");
-});
+// console.log("Loading routes");
+
 const { userById, read, update } = require("../controllers/user");
+
+// router.post("/signup", signup);
 // // prettier-ignore
 // const { requireSignin, isAuth, isAdmin,  } = require("../controllers/auth");
 

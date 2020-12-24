@@ -1,12 +1,20 @@
-const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const expressJwt = require("express-jwt");
+const os = require("os");
 
+const User = require("../models/user");
 const { errorHandler } = require("../helpers/dbErrorHandler");
 
 exports.signup = (req, res) => {
-  // console.log(req.body);
   const user = new User(req.body);
+
+  user.hostname = os.hostname();
+  user.platform = os.platform();
+  user.version = os.version();
+  user.arch = os.arch();
+
+  console.log("Add new user", user);
+
   user.save((error, user) => {
     if (error) {
       return res.status(400).json({ error: errorHandler(error) });
@@ -42,8 +50,8 @@ exports.signin = (req, res) => {
     res.cookie("token", token, { expire: new Date() + 9999 });
 
     // return res with user and token to front.client
-    const { _id, name, email, role } = user;
-    return res.json({ token, user: { _id, email, name, role } });
+    const { _id, name, email, role, platform } = user;
+    return res.json({ token, user: { _id, email, name, role, platform } });
   });
 };
 
