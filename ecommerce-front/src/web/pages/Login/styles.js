@@ -6,11 +6,13 @@ export const Header = styled.header`
   align-items: center;
   flex-direction: column;
   font-family: "Kaushan Script";
+  > button {
+    margin: 5px;
+  }
 `;
 
 export const Button = styled.button`
   width: 100%;
-
   background-color: ${(p) => (p.secondary ? "grey" : "#f8049c")};
   color: ${(p) => (p.secondary ? "wheal" : "white")};
 
