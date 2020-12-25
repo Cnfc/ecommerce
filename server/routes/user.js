@@ -12,7 +12,7 @@ router.get("/secret/:userId", requireSignin, (req, res) => {
 
 router.param("userId", userById);
 
-// router.get("/user/:userId", requireSignin, isAuth, read);
-// router.put("/user/:userId", requireSignin, isAuth, update);
+router.get("/user/:userId", requireSignin, isAuth, read);
+router.put("/user/:userId", requireSignin, isAuth, update);
 
 module.exports = router;

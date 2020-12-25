@@ -15,13 +15,7 @@ const userRoutes = require("./routes/user");
 const categoryRoutes = require("./routes/category");
 const productRoutes = require("./routes/product");
 const logRouter = require("./routes/logger");
-const courses = require("./routes/courses");
 
-const Movies = require("./sobes/model/modelMoovies");
-const Genres = require("./sobes/model/modelGenres");
-
-const movies = require("./sobes/routers/movies");
-const tasks = require("./sobes/routers/tasks");
 // ============================================
 
 // APP
@@ -57,9 +51,6 @@ app.use("/api", userRoutes);
 
 app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
-
-app.use("/api", movies);
-app.use("/api", tasks);
 
 // =============================================
 const port = process.env.PORT || 7999;

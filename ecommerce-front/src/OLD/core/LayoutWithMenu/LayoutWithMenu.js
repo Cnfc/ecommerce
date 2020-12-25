@@ -18,7 +18,7 @@ const LayoutWithMenu = ({
         <p>{description}</p>
       </div>
 
-      <div className={className}> {children}</div>
+      <div className={className}>{children}</div>
     </>
   );
 };
