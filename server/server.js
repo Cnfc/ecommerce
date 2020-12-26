@@ -12,15 +12,12 @@ const cors = require("cors");
 require("dotenv").config();
 
 const Product = require("./models/product");
-// const Course = require("./models/course");
-// const Author = require("./models/authors");
 // import Routes
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const categoryRoutes = require("./routes/category");
 const productRoutes = require("./routes/product");
 const logRouter = require("./routes/logger");
-const courses = require("./routes/courses");
 // APP
 const app = express();
 // =============================================
@@ -67,8 +64,31 @@ app.use("/api", productRoutes);
 
 app.use("/api", logRouter);
 
+// STREAMS =====================================
+// ====================================================
+// Абстактный интерфейс для работы с потоками
+const stream = require("stream");
+
+const { request } = require("http");
+
+//
+app.use("/", (req, res) => {
+  res.send("Its main page");
+});
+
+// let body = [];
+// request
+//   .on("data", (chunk) => {
+//     body.push(chunk);
+//   })
+//   .on("end", () => {
+//     body = Buffer.concat(body).toString();
+//   });
+
+// console.log(body);
 // =============================================
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8100;
+
 app.listen(port, () => {
   console.log(`Server is working on port: ${port}`);
 });

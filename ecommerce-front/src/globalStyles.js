@@ -9,8 +9,10 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     background: wheat;
     color: black;
-    
-    
+  }
+
+  a {
+    text-decoration: none;
   }
 `;
 
