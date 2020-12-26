@@ -3,9 +3,10 @@ import styled, { css } from "styled-components";
 export const Header = styled.header`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   flex-direction: column;
   font-family: "Kaushan Script";
+  margin: 15px;
   > button {
     margin: 5px;
   }
