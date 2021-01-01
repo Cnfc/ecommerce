@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Header = styled.header`
   background: var(--black);
-  color: white;
+  /* color: ${(p) => p.theme.colorOfFont}; */
   padding: 20px;
   display: flex;
   > svg {
@@ -32,7 +32,7 @@ export const CardGrid = styled.div`
 export const Card = styled.div`
   border-radius: 15px;
   padding: 20px;
-  color: white;
+  /* color: ${(p) => p.theme.colorOfFont}; */
   box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.4);
   h3 {
     margin-top: 0;

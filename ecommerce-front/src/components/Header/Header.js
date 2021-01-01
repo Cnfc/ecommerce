@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link as ReactRouterDomLink, useLocation } from "react-router-dom";
-import styled from "styled-components";
+import styled, { ThemeContext } from "styled-components";
+
+import Toggle from "components/Toggle/Toggle";
 
 const HeaderWrapper = styled.header`
   height: 60px;
@@ -9,7 +11,12 @@ const HeaderWrapper = styled.header`
   padding: 0 16px;
   position: fixed;
   top: 0;
-  background-image: linear-gradient(to right, #f8049c, #fdd54f);
+  background-image: linear-gradient(
+    to right,
+    ${(p) => p.theme.primaryColor},
+    ${(p) => p.theme.secondaryColor}
+  );
+  border-bottom: 3px solid ${(p) => p.theme.secondaryColor};
 `;
 
 const Link = ({ isActive, children, ...props }) => {
@@ -24,8 +31,8 @@ const Menu = styled.nav`
   top: 50px;
   left: 0;
   padding: 8px;
-  border-bottom: 3px solid #fdd54f;
-  background-color: #fff;
+  border-bottom: 3px solid ${(p) => p.theme.secondaryColor};
+  background-color: ${(p) => p.theme.bodyBackgroundColor};
 
   @media (min-width: 768px) {
     display: flex;
@@ -45,7 +52,7 @@ const StyledLink = styled(Link)`
   text-align: center;
   margin: auto 0;
   font-weight: ${(p) => (p.isActive ? "bold" : "normal")};
-  color: black;
+  color: ${(p) => p.theme.bodyFontColor};
 `;
 
 const MobileMenuIcon = styled.div`
@@ -56,7 +63,7 @@ const MobileMenuIcon = styled.div`
   > div {
     height: 3px;
     margin: 5px 0;
-    background: black;
+    background: ${(p) => p.theme.bodyFontColor};
     width: 100%;
   }
 
@@ -68,6 +75,7 @@ const MobileMenuIcon = styled.div`
 const Header = () => {
   const { pathname } = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const { id, setTheme } = useContext(ThemeContext);
 
   return (
     <HeaderWrapper>
@@ -83,6 +91,7 @@ const Header = () => {
         <StyledLink isActive={pathname === "/login"} to="/login">
           Login
         </StyledLink>
+        <Toggle isActive={id === "dark"} onToggle={setTheme} />
       </Menu>
     </HeaderWrapper>
   );

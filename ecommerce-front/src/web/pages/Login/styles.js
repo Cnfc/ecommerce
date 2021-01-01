@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 export const Header = styled.header`
   display: flex;
   justify-content: center;
-  align-items: left;
+  align-items: center;
   flex-direction: column;
   font-family: "Kaushan Script";
   margin: 15px;
@@ -14,8 +14,9 @@ export const Header = styled.header`
 
 export const Button = styled.button`
   width: 100%;
-  background-color: ${(p) => (p.secondary ? "grey" : "#f8049c")};
-  color: ${(p) => (p.secondary ? "wheal" : "white")};
+  background-color: ${(p) =>
+    p.secondary ? (p) => p.theme.secondaryColor : (p) => p.theme.primaryColor};
+  color: ${(p) => p.theme.bodyFontColor};
 
   ${(p) =>
     p.large

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 // import { Input } from "components/Input/Input";
@@ -12,13 +12,15 @@ const Form = styled.form`
   background: white;
   border: 1px solid #eee;
   padding: 16px;
-  color: black;
   border-radius: 4px;
 `;
+
+let timeout;
 
 const Login = () => {
   const [formFields, setFormFields] = useState({ username: "", password: "" });
   const [showPass, setShowPass] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   function handleImputChange(e) {
     setFormFields((s) => ({
@@ -32,7 +34,23 @@ const Login = () => {
     setShowPass(!showPass);
   };
 
-  console.log(showPass);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+    timeout = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+    };
+  }, []);
+
   return (
     <>
       <PageLayout>
@@ -54,6 +72,14 @@ const Login = () => {
               type={showPass ? "password" : "text"}
             />
             <button onClick={showPassword}>show/hide</button>
+            <Button disabled={loading} onClick={handleSubmit} large>
+              {loading ? "Loading..." : "Login"}
+            </Button>
+            {!loading && (
+              <>
+                <Button secondary>Register</Button>
+              </>
+            )}
           </Form>
         </Header>
       </PageLayout>
