@@ -14,24 +14,34 @@ const StyledLink = styled(Link)`
   text-align: center;
   margin: auto 0;
   font-weight: ${(p) => (p.isActive ? "bold" : "normal")};
+  font-size: 1.5rem;
   color: ${(p) => p.theme.bodyFontColor};
 `;
+
 const MenuItems = () => {
   const { pathname } = useLocation();
   const { id, setTheme } = useContext(ThemeContext);
   return (
     <>
+      {/* // <ul> */}
+      {/* // <li> */}
       <StyledLink isActive={pathname === "/"} to="/">
         Home
       </StyledLink>
+      {/* // </li> */}
+      {/* // <li> */}
       <StyledLink isActive={pathname === "/login"} to="/login">
         Login
       </StyledLink>
+      {/* // </li> */}
+      {/* // <li> */}
       <StyledLink isActive={pathname === "/animation"} to="/animation">
-        animation
+        Animation
       </StyledLink>
+      {/* // </li> */}
 
       <Toggle isActive={id === "dark"} onToggle={setTheme} />
+      {/* // </ul> */}
     </>
   );
 };

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { Card, CardGrid, Container, Header } from "./Elements";
-import Menu from "./Menu";
+import MenuSVG from "components/Header/MenuSVG";
 import blue from "./blue.png";
 import purp from "./purp.png";
 import black from "./black.png";
@@ -11,20 +11,14 @@ import green from "./green.png";
 import Accordion from "components/Accordion/Accordion";
 import PageLayout from "core/PageLayout";
 import PlusButton from "components/PlusButton/PlusButton";
-import Nav from "components/Nav/Nav";
 
 const Animation = () => {
   const [value, setValue] = useState(0);
   const [isToggled, setToggle] = useState(false);
-  const [isNavOpen, setIsNavOpen] = useState(false);
 
-  console.log(isNavOpen);
   return (
     <PageLayout>
       <>
-        <Menu onClick={() => setIsNavOpen(true)} />
-        <Nav isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
-
         {isToggled && <PlusButton />}
         <AnimatePresence>
           <motion.div>

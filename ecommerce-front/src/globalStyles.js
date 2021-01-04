@@ -11,9 +11,20 @@ const GlobalStyle = createGlobalStyle`
     color: ${(p) => p.theme.bodyFontColor};
   }
 
-  a {
+ a {
     text-decoration: none;
+    color: ${(p) => p.theme.bodyFontColor};
+    transition: 0.5 sease border;
+    &:hover {
+      border-bottom: 3px ${(p) => p.theme.bodyBorderBottomColor} solid;
+    }
   }
+
+  li {
+    list-style-type: none; 
+  }
+
+  
 `;
 
 export default GlobalStyle;

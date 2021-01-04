@@ -23,9 +23,6 @@ const MenuNav = styled(motion.nav)`
     padding: 0;
     margin: 0;
     font-size: 2rem;
-    a {
-      color: ${(p) => p.theme.bodyFontColor};
-    }
   }
 `;
 
@@ -43,12 +40,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
       transition={{ damping: 300 }}
     >
       <button onClick={() => setIsNavOpen(false)}>Close</button>
-      {/* <ul>
-        <li href="#">One</li>
-        <li href="#">Two</li>
-        <li href="#">Three</li>
-        <li href="#">Four</li>
-      </ul> */}
+
       <MenuItems />
     </MenuNav>
   );

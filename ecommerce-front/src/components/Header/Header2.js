@@ -4,7 +4,7 @@ import styled, { ThemeContext } from "styled-components";
 import { motion } from "framer-motion";
 
 import Nav from "components/Nav/Nav";
-
+import MenuSVG from "./MenuSVG";
 import MenuItems from "./MenuItems";
 
 const MenuNav = styled(motion.nav)`
@@ -65,6 +65,7 @@ const Menu = styled(motion.nav)`
 
   @media (min-width: 768px) {
     display: flex;
+    position: relative;
     left: initial;
     top: initial;
     background: none;
@@ -88,16 +89,16 @@ const MobileMenuIcon = styled.div`
   }
 
   @media (min-width: 768px) {
+    /* От этой ширины */
     display: none;
   }
 `;
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
   const [isNavOpen, setIsNavOpen] = useState(false);
 
-  console.log(isNavOpen);
+  console.log(menuOpen);
   return (
     <HeaderWrapper>
       <MobileMenuIcon
@@ -107,13 +108,13 @@ const Header = () => {
           setIsNavOpen((s) => !s);
         }}
       >
-        <div></div>
-        <div></div>
-        <div></div>
+        <MenuSVG />
       </MobileMenuIcon>
 
+      {/* Left side Menu Navigation */}
       {isNavOpen && <Nav isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />}
 
+      {/* Main Menu Navigation */}
       <Menu open={menuOpen}>
         <MenuItems />
       </Menu>
