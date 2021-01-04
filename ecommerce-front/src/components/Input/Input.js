@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-const Input = styled.input`
+const Input = styled(motion.input)`
   padding: 4px 8px;
   border: 1px solid #ccc;
   border-radius: 4px;

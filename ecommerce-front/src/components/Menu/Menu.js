@@ -68,6 +68,11 @@ const Menu = ({ history }) => {
             About
           </Link>
         </li>
+        <li>
+          <Link to="/animation" style={isActive(history, "/animation")}>
+            About
+          </Link>
+        </li>
         {/* {isAuthenticated() && ( */}
         <li>
           <span

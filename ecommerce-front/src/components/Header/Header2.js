@@ -1,8 +1,41 @@
 import React, { useState, useContext } from "react";
 import { Link as ReactRouterDomLink, useLocation } from "react-router-dom";
 import styled, { ThemeContext } from "styled-components";
+import { motion } from "framer-motion";
 
-import Toggle from "components/Toggle/Toggle";
+import Nav from "components/Nav/Nav";
+
+import MenuItems from "./MenuItems";
+
+const MenuNav = styled(motion.nav)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vw;
+  background-color: ${(p) => p.theme.bodyBackgroundColor};
+  padding: 40px;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    padding: 0;
+    margin: 0;
+    font-size: 2rem;
+    a {
+      color: ${(p) => p.theme.bodyFontColor};
+    }
+  }
+`;
+
+const variants = {
+  open: { opacity: 1, x: 0 },
+  closed: { opacity: 0, x: "-100%" },
+};
 
 const HeaderWrapper = styled.header`
   height: 60px;
@@ -19,11 +52,7 @@ const HeaderWrapper = styled.header`
   border-bottom: 3px solid ${(p) => p.theme.secondaryColor};
 `;
 
-const Link = ({ isActive, children, ...props }) => {
-  return <ReactRouterDomLink {...props}>{children}</ReactRouterDomLink>;
-};
-
-const Menu = styled.nav`
+const Menu = styled(motion.nav)`
   display: ${(p) => (p.open ? "block" : "none")};
   font-family: "Open Sans";
   width: 100%;
@@ -46,15 +75,6 @@ const Menu = styled.nav`
   }
 `;
 
-const StyledLink = styled(Link)`
-  padding: 4px 8px;
-  display: block;
-  text-align: center;
-  margin: auto 0;
-  font-weight: ${(p) => (p.isActive ? "bold" : "normal")};
-  color: ${(p) => p.theme.bodyFontColor};
-`;
-
 const MobileMenuIcon = styled.div`
   margin: auto 0 auto auto;
   min-width: 25px;
@@ -73,28 +93,29 @@ const MobileMenuIcon = styled.div`
 `;
 
 const Header = () => {
-  const { pathname } = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
-  const { id, setTheme } = useContext(ThemeContext);
 
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  console.log(isNavOpen);
   return (
     <HeaderWrapper>
-      <MobileMenuIcon onClick={() => setMenuOpen((s) => !s)}>
+      <MobileMenuIcon
+        onClick={() => setMenuOpen((s) => !s)}
+        onDoubleClick={() => {
+          setMenuOpen(false);
+          setIsNavOpen((s) => !s);
+        }}
+      >
         <div></div>
         <div></div>
         <div></div>
       </MobileMenuIcon>
+
+      {isNavOpen && <Nav isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />}
+
       <Menu open={menuOpen}>
-        <StyledLink isActive={pathname === "/"} to="/">
-          Home
-        </StyledLink>
-        <StyledLink isActive={pathname === "/login"} to="/login">
-          Login
-        </StyledLink>
-        <StyledLink isActive={pathname === "/animation"} to="/animation">
-          animation
-        </StyledLink>
-        <Toggle isActive={id === "dark"} onToggle={setTheme} />
+        <MenuItems />
       </Menu>
     </HeaderWrapper>
   );

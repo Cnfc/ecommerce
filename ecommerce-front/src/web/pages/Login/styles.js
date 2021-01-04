@@ -1,4 +1,7 @@
+import React, { useEffect, useState } from "react";
+
 import styled, { css } from "styled-components";
+import { motion } from "framer-motion";
 
 export const Header = styled.header`
   display: flex;

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { motion, AnimatePresence } from "framer-motion";
 
 // import { Input } from "components/Input/Input";
 import { Input } from "../../../components/Input/Input";
 import { Header, Button } from "./styles";
 import PageLayout from "core/PageLayout";
+import Modal from "components/Modal/Modal";
 
-const Form = styled.form`
+const Form = styled(motion.form)`
   width: 100%;
   max-width: 400px;
   background: white;
@@ -21,6 +23,9 @@ const Login = () => {
   const [formFields, setFormFields] = useState({ username: "", password: "" });
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const [value, setValue] = useState(0);
+  const [isToggled, setToggle] = useState(false);
 
   function handleImputChange(e) {
     setFormFields((s) => ({
@@ -51,36 +56,61 @@ const Login = () => {
     };
   }, []);
 
+  console.log(isToggled);
   return (
     <>
       <PageLayout>
         <Header>
-          <h1>Login Page</h1>
-          <Form>
-            <Input
-              name="username"
-              placeholder="Username"
-              onChange={handleImputChange}
-              value={formFields.username}
-              type="text"
-            />
-            <Input
-              name="password"
-              placeholder="Password"
-              onChange={handleImputChange}
-              value={formFields.password}
-              type={showPass ? "password" : "text"}
-            />
-            <button onClick={showPassword}>show/hide</button>
-            <Button disabled={loading} onClick={handleSubmit} large>
-              {loading ? "Loading..." : "Login"}
-            </Button>
-            {!loading && (
-              <>
-                <Button secondary>Register</Button>
-              </>
-            )}
-          </Form>
+          <h1> Super Cool h2</h1>
+
+          {!isToggled && (
+            <AnimatePresence>
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setToggle(true)}
+              >
+                Click
+              </motion.button>
+            </AnimatePresence>
+          )}
+
+          <Modal isToggled={isToggled} setToggle={setToggle}>
+            <Form
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                // type: "spring",
+                // damping: 2,
+                duration: 1,
+              }}
+            >
+              <Input
+                name="username"
+                placeholder="Username"
+                onChange={handleImputChange}
+                value={formFields.username}
+                type="text"
+              />
+              <Input
+                name="password"
+                placeholder="Password"
+                onChange={handleImputChange}
+                value={formFields.password}
+                type={showPass ? "password" : "text"}
+              />
+              <button onClick={showPassword}>show/hide</button>
+              <Button disabled={loading} onClick={handleSubmit} large>
+                {loading ? "Loading..." : "Login"}
+              </Button>
+              {!loading && (
+                <>
+                  <Button secondary>Register</Button>
+                </>
+              )}
+            </Form>
+          </Modal>
         </Header>
       </PageLayout>
     </>
