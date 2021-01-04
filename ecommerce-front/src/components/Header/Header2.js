@@ -89,7 +89,20 @@ const MobileMenuIcon = styled.div`
   }
 
   @media (min-width: 768px) {
-    /* От этой ширины */
+    /* На большой ширинe */
+    display: none;
+  }
+`;
+const MobileTrueText = () => {
+  return <div>Menu</div>;
+};
+
+const MobileTrue = styled(MobileTrueText)`
+  width: 25px;
+  height: 40px;
+  background-color: black;
+
+  @media (max-width: 768px) {
     display: none;
   }
 `;
@@ -117,6 +130,7 @@ const Header = () => {
       {/* Main Menu Navigation */}
       <Menu open={menuOpen}>
         <MenuItems />
+        {/* <MobileTrue /> */}
       </Menu>
     </HeaderWrapper>
   );

@@ -28,6 +28,7 @@ const MenuItems = () => {
       <StyledLink isActive={pathname === "/"} to="/">
         Home
       </StyledLink>
+
       {/* // </li> */}
       {/* // <li> */}
       <StyledLink isActive={pathname === "/login"} to="/login">
@@ -37,6 +38,9 @@ const MenuItems = () => {
       {/* // <li> */}
       <StyledLink isActive={pathname === "/animation"} to="/animation">
         Animation
+      </StyledLink>
+      <StyledLink isActive={pathname === "/blog"} to="/blog">
+        BlogPosts
       </StyledLink>
       {/* // </li> */}
 

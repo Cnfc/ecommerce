@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./web/pages/Home";
 import Animation from "web/pages/Animation";
 import Login from "web/pages/Login";
+import Blog from "web/pages/Blog";
 // import SignUp from "./web/pages/user/SignUp";
 // import SignIn from "./web/pages/user/SignIn";
 // import About from "./web/pages/About/About";
@@ -23,6 +24,7 @@ const Routers = () => {
         <Route path="/" exact component={Home} />
         <Route path="/animation" exact component={Animation} />
         <Route path="/login" exact component={Login} />
+        <Route path="/blog" exact component={Blog} />
 
         {/* <Route path="/signin" exact component={SignIn} />
         <Route path="/signup" exact component={SignUp} />

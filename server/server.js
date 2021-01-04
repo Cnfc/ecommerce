@@ -64,28 +64,11 @@ app.use("/api", productRoutes);
 
 app.use("/api", logRouter);
 
-// STREAMS =====================================
-// ====================================================
-// Абстактный интерфейс для работы с потоками
-const stream = require("stream");
-
-const { request } = require("http");
-
 //
 app.use("/", (req, res) => {
   res.send("Its main page");
 });
 
-// let body = [];
-// request
-//   .on("data", (chunk) => {
-//     body.push(chunk);
-//   })
-//   .on("end", () => {
-//     body = Buffer.concat(body).toString();
-//   });
-
-// console.log(body);
 // =============================================
 const port = process.env.PORT || 8100;
 
