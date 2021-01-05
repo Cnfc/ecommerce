@@ -13,7 +13,7 @@ const FormOfComment = styled.form`
   align-items: center;
 `;
 
-const CommentCreate = ({ postId, title }) => {
+const CommentCreate = ({ postId, title, comments }) => {
   const [content, setContent] = useState("");
 
   const handleSubmit = async (e) => {
@@ -38,8 +38,6 @@ const CommentCreate = ({ postId, title }) => {
         type="text"
       />
       <Button>Submit</Button>
-
-      <CommentsList postId={postId} />
     </FormOfComment>
   );
 };

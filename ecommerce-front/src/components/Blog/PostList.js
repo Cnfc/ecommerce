@@ -29,7 +29,7 @@ const PostList = () => {
   const [loading, setLoading] = useState(true);
 
   const fetchPosts = async () => {
-    const res = await axios.get("http://localhost:4000/posts/");
+    const res = await axios.get("http://localhost:4002/posts");
     setPosts(res.data);
   };
 
@@ -39,7 +39,7 @@ const PostList = () => {
   }, []);
 
   const renderPosts = Object.values(posts);
-  console.log(renderPosts);
+  console.log(posts);
   return (
     <>
       <h3>Lists of Posts</h3>
@@ -47,9 +47,10 @@ const PostList = () => {
       <PostLists>
         {loading
           ? "LOADING"
-          : renderPosts.map(({ id, title }) => (
+          : renderPosts.map(({ id, title, comments }) => (
               <Post key={id}>
-                <CommentCreate postId={id} title={title} />
+                <CommentCreate postId={id} title={title} comments={comments} />
+                <CommentsList comments={comments} />
               </Post>
             ))}
       </PostLists>
