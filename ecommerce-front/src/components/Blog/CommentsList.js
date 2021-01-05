@@ -4,7 +4,7 @@ import axios from "axios";
 const CommentsList = ({ postId }) => {
   const [listOfComments, setListOfComments] = useState([]);
 
-  const getComments = async () => {
+  const fetchComments = async () => {
     const res = await axios.get(
       `http://localhost:4001/posts/${postId}/comments`
     );
@@ -14,15 +14,15 @@ const CommentsList = ({ postId }) => {
   console.log(listOfComments);
 
   useEffect(() => {
-    getComments();
+    fetchComments();
   }, []);
 
   return (
-    <div>
+    <ul>
       {listOfComments.map(({ id, content }) => (
-        <div key={id}>{content}</div>
+        <li key={id}>{content}</li>
       ))}
-    </div>
+    </ul>
   );
 };
 

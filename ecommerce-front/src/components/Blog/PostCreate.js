@@ -30,6 +30,7 @@ const PostCreate = () => {
       <h4>Create Post</h4>
       <h6>Title</h6>
       <Input
+        autoFocus
         name="posts name"
         placeholder="posts name"
         onChange={(e) => setTitle(e.target.value)}

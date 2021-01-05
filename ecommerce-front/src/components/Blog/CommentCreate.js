@@ -29,7 +29,6 @@ const CommentCreate = ({ postId, title }) => {
   return (
     <FormOfComment onSubmit={handleSubmit}>
       <h4>{title}</h4>
-      <CommentsList postId={postId} />
 
       <Input
         name="commentCreate"
@@ -39,6 +38,8 @@ const CommentCreate = ({ postId, title }) => {
         type="text"
       />
       <Button>Submit</Button>
+
+      <CommentsList postId={postId} />
     </FormOfComment>
   );
 };
