@@ -27,7 +27,7 @@ const Login = () => {
   const [value, setValue] = useState(0);
   const [isToggled, setToggle] = useState(false);
 
-  function handleImputChange(e) {
+  function handleInputChange(e) {
     setFormFields((s) => ({
       ...s,
       [e.target.name]: e.target.value,
@@ -89,14 +89,14 @@ const Login = () => {
               <Input
                 name="username"
                 placeholder="Username"
-                onChange={handleImputChange}
+                onChange={handleInputChange}
                 value={formFields.username}
                 type="text"
               />
               <Input
                 name="password"
                 placeholder="Password"
-                onChange={handleImputChange}
+                onChange={handleInputChange}
                 value={formFields.password}
                 type={showPass ? "password" : "text"}
               />
