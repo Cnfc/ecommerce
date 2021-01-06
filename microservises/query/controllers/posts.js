@@ -1,17 +1,6 @@
 const posts = {};
 
-exports.getPost = (req, res) => {
-  res.send(posts);
-};
-
-exports.sendPost = async (req, res) => {
-  res.status(201).json(posts[id]);
-};
-
-exports.receivedEvent = (req, res) => {
-  const { type, data } = req.body;
-  console.log("Received Event type", req.body.type);
-
+exports.handleEvent = (type, data) => {
   if (type === "PostCreated") {
     const { id, title } = data;
     posts[id] = { id, title, comments: [] };
@@ -35,6 +24,23 @@ exports.receivedEvent = (req, res) => {
     comment.status = status;
     comment.content = content;
   }
+};
+
+exports.getPost = (req, res) => {
+  res.send(posts);
+};
+
+exports.sendPost = async (req, res) => {
+  res.status(201).json(posts[id]);
+};
+
+exports.receivedEvent = (req, res) => {
+  const { type, data } = req.body;
+  console.log("Received Event type", req.body.type);
+
+  handleEvent(type, data);
 
   res.send({});
 };
+
+// module.exports = { handleEvent };
