@@ -111,7 +111,6 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
 
-  console.log(menuOpen);
   return (
     <HeaderWrapper>
       <MobileMenuIcon

@@ -11,7 +11,13 @@ const FormPostCreate = styled.form`
   justify-content: center;
   align-items: center;
   width: 50%;
+  border: 1px solid ${(p) => p.theme.bodyFontColor};
   /* padding: 40px; */
+
+  > input,
+  button {
+    width: 80%;
+  }
 `;
 
 const PostCreate = () => {
@@ -28,7 +34,6 @@ const PostCreate = () => {
   return (
     <FormPostCreate onSubmit={handleSubmit}>
       <h4>Create Post</h4>
-      <h6>Title</h6>
       <Input
         autoFocus
         name="posts name"

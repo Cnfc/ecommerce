@@ -5,8 +5,7 @@ import { motion } from "framer-motion";
 
 export const Button = styled.button`
   width: 100%;
-  background-color: ${(p) =>
-    p.secondary ? (p) => p.theme.secondaryColor : (p) => p.theme.primaryColor};
+  background-color: ${(p) => p.theme.secondaryColor};
   color: ${(p) => p.theme.bodyFontColor};
 
   ${(p) =>

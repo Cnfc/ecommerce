@@ -3,7 +3,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const requireComments = require("./routes/comments");
-const receivedEvent = require("./routes/eventBus");
+// const receivedEvent = require("./routes/eventBus");
+const receivedEvent = require("./routes/comments");
 
 const app = express();
 app.use(bodyParser.json());

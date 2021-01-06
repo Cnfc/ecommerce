@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const variants = {
   open: { opacity: 1, height: "auto" },
-  close: { opacity: 0, height: 0 },
+  close: { opacity: 0.5, height: 0 },
 };
 
-const Accordion = ({}) => {
+const Accordion = () => {
   const [isToggled, setIsToggled] = useState(false);
 
   return (
@@ -24,7 +24,7 @@ const Accordion = ({}) => {
             initial="close"
             animate="open"
             exit="close"
-            transition={{}}
+            transition={{ duration: 1 }}
             style={{ overflow: "hidden" }}
           >
             <p>

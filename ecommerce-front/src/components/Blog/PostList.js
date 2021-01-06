@@ -5,6 +5,8 @@ import styled from "styled-components";
 import CommentCreate from "./CommentCreate";
 import CommentsList from "./CommentsList";
 
+import { TitleOfPage } from "components/Blog/styles/TitlePfPage";
+
 const PostLists = styled.div`
   display: flex;
   flex-direction: row;
@@ -13,15 +15,16 @@ const PostLists = styled.div`
   justify-content: center;
   padding: 5px;
   margin: 20px;
-  /* width: 25%; */
+  width: 100%;
 `;
 
 const Post = styled.div`
   min-height: 50px;
   /* max-height: 50px; */
-  border: 1px solid black;
-  width: 25%;
+  border: 1px solid ${(p) => p.theme.bodyFontColor};
   margin: 30px;
+  max-width: 26%;
+  min-width: 25%;
 `;
 
 const PostList = () => {
@@ -39,18 +42,18 @@ const PostList = () => {
   }, []);
 
   const renderPosts = Object.values(posts);
-  console.log(posts);
+  console.log("All posts:", posts);
   return (
     <>
-      <h3>Lists of Posts</h3>
+      <TitleOfPage>Lists of Posts</TitleOfPage>
 
       <PostLists>
         {loading
           ? "LOADING"
-          : renderPosts.map(({ id, title, comments }) => (
+          : renderPosts.map(({ id, title, comments, status }) => (
               <Post key={id}>
                 <CommentCreate postId={id} title={title} comments={comments} />
-                <CommentsList comments={comments} />
+                <CommentsList comments={comments} status={status} />
               </Post>
             ))}
       </PostLists>

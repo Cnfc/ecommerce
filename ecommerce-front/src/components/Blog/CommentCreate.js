@@ -28,7 +28,7 @@ const CommentCreate = ({ postId, title, comments }) => {
   };
   return (
     <FormOfComment onSubmit={handleSubmit}>
-      <h4>{title}</h4>
+      <h4>Title: {title}</h4>
 
       <Input
         name="commentCreate"

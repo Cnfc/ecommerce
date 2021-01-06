@@ -5,17 +5,19 @@ import PageLayout from "core/PageLayout";
 import PostList from "components/Blog/PostList";
 import PostCreate from "components/Blog/PostCreate";
 
+import { TitleOfPage } from "components/Blog/styles/TitlePfPage";
+
 const Posts = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 25px;
 `;
 
 const Blog = () => {
   return (
     <PageLayout>
-      <h1>Blog Posts</h1>
-      <div>Posts</div>
+      <TitleOfPage>Blog Posts</TitleOfPage>
       <Posts>
         <PostCreate />
         <PostList />

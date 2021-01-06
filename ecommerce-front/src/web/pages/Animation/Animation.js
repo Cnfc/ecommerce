@@ -13,23 +13,19 @@ import PageLayout from "core/PageLayout";
 import PlusButton from "components/PlusButton/PlusButton";
 
 const Animation = () => {
-  const [value, setValue] = useState(0);
   const [isToggled, setToggle] = useState(false);
 
   return (
     <PageLayout>
       <>
         {isToggled && <PlusButton />}
-        <AnimatePresence>
-          <motion.div>
-            {/* <Header>
+        {/* <Header>
             <h1>Header</h1>
           </Header> */}
-            <Container>
-              <h2 onClick={() => setToggle(!isToggled)}>Super Cool</h2>
-
-              <Accordion />
-              {/* <CardGrid>
+        <Container>
+          <h2 onClick={() => setToggle(!isToggled)}>Super Cool</h2>
+          <Accordion />
+          {/* <CardGrid>
               <Card style={{ background: "var(--purp)" }}>
                 <h3>Some card</h3>
                 <img src={purp} />
@@ -48,9 +44,7 @@ const Animation = () => {
                 <img src={green} />
               </Card>
             </CardGrid> */}
-            </Container>
-          </motion.div>
-        </AnimatePresence>
+        </Container>
       </>
     </PageLayout>
   );
