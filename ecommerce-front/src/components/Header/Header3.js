@@ -122,7 +122,7 @@ const MobileTrue = styled(MobileTrueText)`
   background-color: black;
 
   @media (max-width: 768px) {
-    display: none;
+    /* на мобильниках */
   }
 `;
 
@@ -146,6 +146,7 @@ const Header = () => {
       {isNavOpen && <Nav isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />}
 
       {/* Main Menu Navigation */}
+
       <Menu open={menuOpen}>
         <MenuItems />
         {/* <MobileTrue /> */}

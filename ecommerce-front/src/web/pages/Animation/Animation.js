@@ -25,25 +25,30 @@ const Animation = () => {
         <Container>
           <h2 onClick={() => setToggle(!isToggled)}>Super Cool</h2>
           <Accordion />
-          {/* <CardGrid>
-              <Card style={{ background: "var(--purp)" }}>
-                <h3>Some card</h3>
-                <img src={purp} />
-              </Card>
 
-              <Card style={{ background: "var(--blue)" }}>
-                <h3>Some card</h3>
-                <img src={blue} />
-              </Card>
-              <Card style={{ background: "var(--black)" }}>
-                <h3>Some card</h3>
-                <img src={black} />
-              </Card>
-              <Card style={{ background: "var(--green)" }}>
-                <h3>Some card</h3>
-                <img src={green} />
-              </Card>
-            </CardGrid> */}
+          <CardGrid>
+            <Card
+              // whileHover={{ scale: 1.2 }}
+              whileHover={{ scale: [1, 0.8, 1.2, 1] }}
+              style={{ background: "var(--red)" }}
+            >
+              <h3>Some card</h3>
+              <img src={purp} />
+            </Card>
+
+            <Card style={{ background: "var(--blue)" }}>
+              <h3>Some card</h3>
+              <img src={blue} />
+            </Card>
+            <Card style={{ background: "var(--black)" }}>
+              <h3>Some card</h3>
+              <img src={black} />
+            </Card>
+            <Card style={{ background: "var(--green)" }}>
+              <h3>Some card</h3>
+              <img src={green} />
+            </Card>
+          </CardGrid>
         </Container>
       </>
     </PageLayout>
