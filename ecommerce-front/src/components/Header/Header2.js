@@ -65,6 +65,7 @@ const Menu = styled(motion.nav)`
 
   @media (min-width: 768px) {
     display: flex;
+    flex-direction: row;
     position: relative;
     left: initial;
     top: initial;
@@ -73,6 +74,24 @@ const Menu = styled(motion.nav)`
     border-bottom: none;
     position: relative;
     width: initial;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: initial;
+    top: initial;
+    background: none;
+    margin: auto 0 auto auto;
+    border-bottom: none;
+    position: relative;
+    width: initial;
+    padding-left: 0px;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
   }
 `;
 
