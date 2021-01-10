@@ -11,7 +11,7 @@ const variants = {
 };
 
 const SecondDay = () => {
-  const [isToggled1, setIsToggled1] = useState(false);
+  const [isToggled1, setIsToggled1] = useState(true);
 
   return (
     <article>
@@ -32,56 +32,32 @@ const SecondDay = () => {
             style={{ overflow: "hidden" }}
           >
             <>
-              <div>
-                <Tooltip title="reference the docker client" arrow>
+              {/* <Tooltip title="reference the docker client" arrow>
                   <Button>1docker</Button>
-                </Tooltip>
-                <Tooltip
-                  title="docker create (-a):give me output + docker start"
-                  arrow
-                >
-                  <Button>run</Button>
-                </Tooltip>
-                <Tooltip title="name of image to use this container" arrow>
-                  <Button>image name </Button>
-                </Tooltip>
-                <Tooltip title="default command" arrow>
-                  <Button>4command</Button>
-                </Tooltip>
-              </div>
+                </Tooltip> */}
+              Init
+              <span>Docker server Commands</span>
               <div>
-                <h4>Linux command</h4>
-                <ul>
-                  <li>ping google.com</li>
-                </ul>
-                <h4>Doker commang command</h4>
-                <ul>
-                  <li>docker ps --all</li>
-                  <li>
-                    docker system prune (empty cache && deliting containers)
-                  </li>
-                  <li>
-                    docker kill(immediatly) && stop(complete &&stop, max10s )
-                  </li>
-                  <li>
-                    docker exec
-                    <Tooltip
-                      title="allows us to provide input to the container"
-                      arrow
-                    >
-                      <Button>-it</Button>
-                    </Tooltip>
-                    id command :: run another command
-                    <Tooltip
-                      title="Commans Processors: bash, powershell, zsh, sh"
-                      arrow
-                    >
-                      <Button>sh</Button>
-                    </Tooltip>
-                  </li>
-                </ul>
-                <AddIcon fontSize="large" htmlColor="green" />
+                <Tooltip
+                  arrow
+                  title="Instruction telling Docker server what to do"
+                >
+                  <Button>FROM</Button>
+                </Tooltip>
+                <Tooltip arrow title="">
+                  <Button>RUN</Button>
+                </Tooltip>
+                <Tooltip arrow title="">
+                  <Button>CMD</Button>
+                </Tooltip>
+
+                <Tooltip arrow title="">
+                  <Button>COPY (./from => ./to)</Button>
+                </Tooltip>
               </div>
+              <div>Docker Commands: </div>
+              Order is important
+              <div></div>
             </>
           </motion.div>
         )}

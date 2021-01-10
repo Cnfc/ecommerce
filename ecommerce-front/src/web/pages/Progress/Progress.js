@@ -4,7 +4,6 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 
-import AccordionShared from "components/Accordion/AccordionShared";
 import FirstDay from "./FirstDay";
 import SecondDay from "./SecondDay";
 
@@ -25,9 +24,10 @@ const Progress = () => {
   return (
     <Container>
       <h6>Docker 1-250; - kernel - container - image</h6>
-
       <FirstDay />
+      <p>1-25</p>
       <SecondDay />
+      <p>25-</p>
     </Container>
   );
 };
