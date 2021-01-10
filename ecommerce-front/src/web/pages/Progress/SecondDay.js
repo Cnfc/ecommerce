@@ -56,8 +56,15 @@ const SecondDay = () => {
                 </Tooltip>
               </div>
               <div>Docker Commands: </div>
-              Order is important
-              <div></div>
+              Docker Compose: Order is important
+              <div>
+                <article>1- docker build -t dockerName/imageNname .</article>
+                <article>2- docker run dockerName/imageNname</article>
+
+                <article>
+                  docker build -t stanislavdashkov/visits:latest .
+                </article>
+              </div>
             </>
           </motion.div>
         )}

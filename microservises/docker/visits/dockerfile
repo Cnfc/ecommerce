@@ -1,14 +1,14 @@
 # Use an existing docker image as a base;
 FROM node:alpine
 
-WORKDIR /usr/app
+WORKDIR '/app'
 
 # Download and install a dependency without npm reinstall;
-COPY ./package.json ./
+COPY package.json .
 RUN npm install
-COPY ./ ./
+COPY . .
 
 # Tell the image what to do when its starts as a container 
-CMD [ "npm", 'start' ]
+CMD [ "npm","start" ]
 
 
