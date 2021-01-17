@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useTransform,
+} from "framer-motion";
 
 import { Card, CardGrid, Container, Header } from "./Elements";
 import MenuSVG from "components/Header/MenuSVG";
@@ -14,6 +19,15 @@ import PlusButton from "components/PlusButton/PlusButton";
 
 const Animation = () => {
   const [isToggled, setToggle] = useState(false);
+  const [isCartActive, setIsCartActive] = useState(true);
+
+  const x = useMotionValue(0);
+  const opacity = useTransform(x, [-200, 0, 200], [0, 1, 0]);
+
+  const variants = {
+    open: { opacity: 0 },
+    closed: { opacity: 1 },
+  };
 
   return (
     <PageLayout>
@@ -29,17 +43,55 @@ const Animation = () => {
           <CardGrid>
             <Card
               // whileHover={{ scale: 1.2 }}
-              whileHover={{ scale: [1, 0.8, 1.2, 1] }}
+              whileHover={{ scale: [1, 0.9, 1.1, 1] }}
               style={{ background: "var(--red)" }}
             >
               <h3>Some card</h3>
               <img src={purp} />
             </Card>
+            <AnimatePresence>
+              {isCartActive && (
+                <motion.div
+                  exit={{ height: 0, overflow: "hidden", opacity: 0 }}
+                  transition={{
+                    duration: 1,
+                  }}
+                >
+                  <Card
+                    onDragEnd={(event, info) => {
+                      console.log(info.point.x);
+                      if (Math.abs(info.point.x) > 500) {
+                        console.log("dismiss");
+                        setIsCartActive(false);
+                      } else if (info.point.x < 0) {
+                        console.log("approve");
+                      } else {
+                        console.log("none");
+                      }
+                    }}
+                    drag="x"
+                    dragConstraints={{
+                      left: -10,
+                      right: 10,
+                    }}
+                    initial={{ y: 40 }}
+                    animate={{ y: 0 }}
+                    transition={{
+                      duration: 1,
+                    }}
+                    style={{
+                      x,
+                      opacity: isCartActive ? opacity : 0,
+                      background: "var(--blue)",
+                    }}
+                  >
+                    <h3>Some card</h3>
+                    <img src={blue} />
+                  </Card>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
-            <Card style={{ background: "var(--blue)" }}>
-              <h3>Some card</h3>
-              <img src={blue} />
-            </Card>
             <Card style={{ background: "var(--black)" }}>
               <h3>Some card</h3>
               <img src={black} />
