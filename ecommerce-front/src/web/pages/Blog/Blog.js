@@ -18,10 +18,10 @@ const Blog = () => {
   return (
     <PageLayout>
       <TitleOfPage>Blog Posts</TitleOfPage>
-      <Posts>
+      {/* <Posts>
         <PostCreate />
         <PostList />
-      </Posts>
+      </Posts> */}
     </PageLayout>
   );
 };

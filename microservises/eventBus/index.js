@@ -26,8 +26,6 @@ app.get("/events", (req, res) => {
   res.send(events);
 });
 
-console.log("he");
-
 console.log(events);
 // const port = process.env.port || 4000;
 const port = 4005;

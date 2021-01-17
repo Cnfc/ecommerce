@@ -64,6 +64,7 @@ const SecondDay = () => {
                 <article>
                   docker build -t stanislavdashkov/visits:latest .
                 </article>
+                <article>docker-compose up or --build</article>
               </div>
             </>
           </motion.div>
