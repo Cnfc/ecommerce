@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import LayoutWithMenu from "../../core/LayoutWithMenu";
+import LayoutWithMenu from "../../layouts/LayoutWithMenu";
 import useStyles from "./styles";
 import { isAuthenticated } from "../../../auth";
 

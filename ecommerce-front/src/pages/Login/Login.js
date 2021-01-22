@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 
 // import { Input } from "components/Input/Input";
-import { Input } from "../../../components/Input/Input";
+import { Input } from "../../components/Input/Input";
 import { Header, Button } from "./styles";
-import PageLayout from "core/PageLayout";
+import PageLayout from "layouts/PageLayout";
 import Modal from "components/Modal/Modal";
 
 const Form = styled(motion.form)`

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Layout from "core/Layout";
-import PageLayout from "core/PageLayout";
+import Layout from "layouts/Layout";
+import PageLayout from "layouts/PageLayout";
 import { Button } from "@material-ui/core";
 import { AnimatePresence } from "framer-motion";
 import Nav from "components/Nav/Nav";

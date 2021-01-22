@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { signup } from "../../../auth";
-import Layout from "../../core/LayoutWithMenu";
+import Layout from "../../layouts/LayoutWithMenu";
 import useStyles from "./styles";
 
 const SignUp = () => {

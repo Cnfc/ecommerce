@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-import PageLayout from "core/PageLayout";
+import PageLayout from "layouts/PageLayout";
 import PostList from "components/Blog/PostList";
 import PostCreate from "components/Blog/PostCreate";
 

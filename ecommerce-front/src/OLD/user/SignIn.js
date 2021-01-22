@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
 
 import { signin, authenticate, isAuthenticated } from "../../../auth";
-import LayoutWithMenu from "../../core/LayoutWithMenu";
+import LayoutWithMenu from "../../layouts/LayoutWithMenu";
 import useStyles from "./styles";
 
 const SignIn = () => {

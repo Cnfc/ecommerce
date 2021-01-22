@@ -4,7 +4,7 @@ import { Link as ReactRouterDomLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 import Toggle from "components/Toggle/Toggle";
-import { links } from "core/Links";
+import { links } from "layouts/Links";
 
 const Link = ({ isActive, children, ...props }) => {
   return <ReactRouterDomLink {...props}>{children}</ReactRouterDomLink>;

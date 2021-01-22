@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import Home from "./web/pages/Home";
-import Animation from "web/pages/Animation";
-import Login from "web/pages/Login";
-import Blog from "web/pages/Blog";
-import Progress from "web/pages/Progress";
+import Home from "./pages/Home";
+import Animation from "pages/Animation";
+import Login from "pages/Login";
+import Blog from "pages/Blog";
+import Progress from "pages/Progress";
 // import SignUp from "./web/pages/user/SignUp";
 // import SignIn from "./web/pages/user/SignIn";
 // import About from "./web/pages/About/About";

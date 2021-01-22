@@ -14,7 +14,7 @@ import purp from "./purp.png";
 import black from "./black.png";
 import green from "./green.png";
 import Accordion from "components/Accordion/Accordion";
-import PageLayout from "core/PageLayout";
+import PageLayout from "layouts/PageLayout";
 import PlusButton from "components/PlusButton/PlusButton";
 
 const Animation = () => {
