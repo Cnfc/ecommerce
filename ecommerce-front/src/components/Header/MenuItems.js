@@ -10,6 +10,14 @@ const Link = ({ isActive, children, ...props }) => {
   return <ReactRouterDomLink {...props}>{children}</ReactRouterDomLink>;
 };
 
+const toggleVariants = {
+  open: {
+    opacity: 1,
+  },
+  closed: {
+    opacity: 0,
+  },
+};
 const liVariants = {
   open: {
     y: 0,
@@ -52,9 +60,9 @@ const MenuItems = () => {
   return (
     <>
       <motion.ul variants={ulVariants}>
-        {links.map(({ name, to }) => {
+        {links.map(({ name, to, id }) => {
           return (
-            <motion.li variants={liVariants}>
+            <motion.li key={id} variants={liVariants}>
               <StyledLink key={to} isActive={pathname === to} to={to}>
                 {name}
               </StyledLink>
@@ -62,8 +70,10 @@ const MenuItems = () => {
           );
         })}
       </motion.ul>
-
-      <Toggle isActive={id === "dark"} onToggle={setTheme} />
+      <motion.div transition={{ duration: 3 }} variants={toggleVariants}>
+        <Toggle isActive={id === "dark"} onToggle={setTheme} />
+      </motion.div>
+      >
     </>
   );
 };

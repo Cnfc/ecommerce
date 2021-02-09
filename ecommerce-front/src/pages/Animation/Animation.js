@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-
 import {
   motion,
   AnimatePresence,
   useMotionValue,
   useTransform,
 } from "framer-motion";
-
 import { Card, CardGrid, Container, Header } from "./Elements";
 import MenuSVG from "components/Header/MenuSVG";
 import blue from "./blue.png";
@@ -16,6 +14,8 @@ import green from "./green.png";
 import Accordion from "components/Accordion/Accordion";
 import PageLayout from "layouts/PageLayout";
 import PlusButton from "components/PlusButton/PlusButton";
+import Squares from "./components/Squares";
+import SlideShow from "./components/SlideShow";
 
 const Animation = () => {
   const [isToggled, setToggle] = useState(false);
@@ -39,6 +39,7 @@ const Animation = () => {
         <Container>
           <h2 onClick={() => setToggle(!isToggled)}>Super Cool</h2>
           <Accordion />
+          <SlideShow />
 
           <CardGrid>
             <Card
@@ -101,6 +102,7 @@ const Animation = () => {
               <img src={green} />
             </Card>
           </CardGrid>
+          <Squares />
         </Container>
       </>
     </PageLayout>

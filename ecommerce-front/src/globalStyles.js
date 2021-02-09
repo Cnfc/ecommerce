@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-import "./fonts/KaushanScript.ttf";
+import "./assets/fonts/KaushanScript.ttf";
 
 const GlobalStyle = createGlobalStyle`
   body {
