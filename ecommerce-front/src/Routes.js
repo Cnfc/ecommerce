@@ -1,12 +1,14 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
 import Home from "./pages/Home";
 import Animation from "pages/Animation";
 import Login from "pages/Login";
 import Blog from "pages/Blog";
 import Progress from "pages/Progress";
-import { AnimatePresence } from "framer-motion";
+import AdminPanel from "pages/AdminPanel";
+import Apollo from "pages/Apollo";
 // import SignUp from "./web/pages/user/SignUp";
 // import SignIn from "./web/pages/user/SignIn";
 // import About from "./web/pages/About/About";
@@ -29,6 +31,8 @@ const Routers = () => {
           <Route path="/login" exact component={Login} />
           <Route path="/blog" exact component={Blog} />
           <Route path="/progress" exact component={Progress} />
+          <Route path="/adminPanel" exact component={AdminPanel} />
+          <Route path="/apollo" exact component={Apollo} />
 
           {/* <Route path="/signin" exact component={SignIn} />
         <Route path="/signup" exact component={SignUp} />

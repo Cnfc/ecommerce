@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
 
 import Layout from "layouts/Layout";
 import PageLayout from "layouts/PageLayout";
 import { Button } from "@material-ui/core";
 import Nav from "components/Nav/Nav";
 import MenuItems from "components/Header/MenuItems";
+import { changeUser } from "pages/Apollo/meta/actions";
 
 const variants = {
   initial: { opacity: 0 },
@@ -28,15 +30,23 @@ const hVariants = {
 };
 
 const Home = () => {
-  // return (
-  //   <Layout
-  //     title="Home Page"
-  //     description="Node React Ecommerce App page DESCRIPTION"
-  //   >
-  //     ...
-  //   </Layout>
-  // );
+  const dispatch = useDispatch();
+  // const { searchRepo } = useActions();
+  const { userName } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    // setData(searchRepo());
+  }, []);
+
   const [openMenu, setOpenMenu] = useState(false);
+  const [name, setName] = useState(userName);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(changeUser(name));
+  };
+
   return (
     <motion.div
       variants={variants}
@@ -51,8 +61,13 @@ const Home = () => {
           animate="animate"
           exit="exit"
         >
+          {userName}
           Home Page
         </motion.h3>
+        <form onSubmit={handleSubmit}>
+          <input placeholder={name} onChange={(e) => setName(e.target.value)} />
+          <button>Change Name</button>
+        </form>
         {/* <Button onClick={() => setOpenMenu((s) => !s)}>Menu</Button> */}
         {openMenu && <div>SOME</div>}
         sad
