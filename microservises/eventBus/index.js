@@ -6,7 +6,6 @@ const app = express();
 app.use(bodyParser.json());
 
 // EventBus RadditMQ, Kafka, NATS
-
 const events = [];
 
 app.post("/events", (req, res) => {
@@ -27,6 +26,7 @@ app.get("/events", (req, res) => {
 });
 
 console.log(events);
+
 // const port = process.env.port || 4000;
 const port = 4005;
 app.listen(port, () => {
