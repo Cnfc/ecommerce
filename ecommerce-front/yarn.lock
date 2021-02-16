@@ -1585,6 +1585,13 @@
   resolved "https://registry.yarnpkg.com/@redux-saga/types/-/types-1.1.0.tgz#0e81ce56b4883b4b2a3001ebe1ab298b84237204"
   integrity sha512-afmTuJrylUU/0OtqzaRkbyYFFNgCF73Bvel/sw90pvGrWIZ+vyoIJqA6eMSoA6+nb443kTmulmBtC9NerXboNg==
 
+"@rehooks/window-scroll-position@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@rehooks/window-scroll-position/-/window-scroll-position-1.0.1.tgz#3cb80f22cbf9cdbd2041b5236ae1fce8245b2f1c"
+  integrity sha512-+7uUcU2DBzXW4ygKTCqjCrtT4Nq0f+hNxQvAw69pXSBc7DbqmzfpxrYu27dT4tXrUKSQPFPpo5AdMv2oUJVM7g==
+  dependencies:
+    lodash.throttle "^4.1.1"
+
 "@sheerun/mutationobserver-shim@^0.3.2":
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/@sheerun/mutationobserver-shim/-/mutationobserver-shim-0.3.3.tgz#5405ee8e444ed212db44e79351f0c70a582aae25"
@@ -7209,6 +7216,11 @@ lodash.templatesettings@^4.0.0:
   integrity sha512-stgLz+i3Aa9mZgnjr/O+v9ruKZsPsndy7qPZOchbqk2cnTU1ZaldKK+v7m54WoKIyxiuMZTKT2H81F8BeAc3ZQ==
   dependencies:
     lodash._reinterpolate "^3.0.0"
+
+lodash.throttle@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
+  integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
 
 lodash.uniq@^4.5.0:
   version "4.5.0"

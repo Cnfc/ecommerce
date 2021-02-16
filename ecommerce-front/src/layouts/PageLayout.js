@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Header from "components/Header/Header";
 import Header2 from "components/Header/Header2";
 import Nav from "components/Nav/Nav";
+import RightPanel from "components/RightPanel";
 
 const Content = styled.main`
   /* max-width: 800px; */

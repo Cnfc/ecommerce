@@ -2,6 +2,7 @@ import PageLayout from "layouts/PageLayout";
 import React, { Component, Suspense } from "react";
 import { useTranslation, withTranslation, Trans } from "react-i18next";
 
+import GridGallery from "./GridGallery";
 // use hoc for class based components
 class LegacyWelcomeClass extends Component {
   render() {
@@ -33,6 +34,8 @@ function Page() {
     <PageLayout>
       <div>
         <div>
+          <GridGallery></GridGallery>
+
           <Welcome />
 
           <button type="button" onClick={() => changeLanguage("en")}>
