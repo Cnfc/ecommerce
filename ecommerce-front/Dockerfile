@@ -1,9 +1,11 @@
 FROM node:alpine
 
-WORKDIR /app
+# Add the following line 
+ENV CI=true
 
+WORKDIR /app
 COPY package.json ./
-RUN yarn
+RUN yarn install
 COPY ./ ./
 
 CMD ["yarn", "start"]

@@ -6,6 +6,8 @@ import AddIcon from "@material-ui/icons/Add";
 
 import FirstDay from "./FirstDay";
 import SecondDay from "./SecondDay";
+import PageLayout from "layouts/PageLayout";
+import K8s from "./K8s";
 
 const Container = styled.div`
   padding: 20px;
@@ -22,13 +24,17 @@ const Container = styled.div`
 
 const Progress = () => {
   return (
-    <Container>
-      <h6>Docker 1-250; - kernel - container - image</h6>
-      <FirstDay />
-      <p>1-25</p>
-      <SecondDay />
-      <p>25-</p>
-    </Container>
+    <PageLayout>
+      <Container>
+        <h6>Docker 1-250; - kernel - container - image</h6>
+        <FirstDay />
+        <p>1-25</p>
+        <SecondDay />
+        <p>25-</p>
+      </Container>
+
+      <K8s />
+    </PageLayout>
   );
 };
 
