@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import i18next from "i18next";
 
 import PageLayout from "layouts/PageLayout";
 import PostList from "./components/PostList";

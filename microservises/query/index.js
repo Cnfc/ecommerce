@@ -43,12 +43,13 @@ const handleEvent = (type, data) => {
   }
 
   if (type === "CommentUpdated") {
-    console.log(data);
     const { id, content, postId, status } = data;
+
     const post = posts[postId];
     const comment = post.comments.find((comment) => {
       return comment.id === id;
     });
+
     comment.status = status;
     comment.content = content;
   }
@@ -57,36 +58,21 @@ const handleEvent = (type, data) => {
 app.post("/events", (req, res) => {
   const { type, data } = req.body;
 
-  // console.log(data);
-  // handleEvent(type, data);
-  if (type === "PostCreated") {
-    const { id, title } = data;
-    posts[id] = { id, title, comments: [] };
-  }
-
-  if (type === "CommentCreated") {
-    const { id, content, postId, status } = data;
-
-    const post = posts[postId];
-    post.comments.push({ id, content, status });
-  }
-
-  if (type === "CommentUpdated") {
-    console.log(data);
-    const { id, content, postId, status } = data;
-    const post = posts[postId];
-    const comment = post.comments.find((comment) => {
-      return comment.id === id;
-    });
-    comment.status = status;
-    comment.content = content;
-  }
+  handleEvent(type, data);
 
   res.send({});
 });
 
 // const port = process.env.port || 4000;
 const port = 4002;
-app.listen(port, () => {
+app.listen(port, async () => {
   console.log(`Query on port: ${port}`);
+
+  const res = await axios.get("http://localhost:4005/events");
+
+  for (let event of res.data) {
+    console.log("Processig event:", event.type);
+
+    handleEvent(event.type, event.data);
+  }
 });

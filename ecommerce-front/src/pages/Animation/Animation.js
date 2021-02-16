@@ -16,6 +16,7 @@ import PageLayout from "layouts/PageLayout";
 import PlusButton from "components/PlusButton/PlusButton";
 import Squares from "./components/Squares";
 import SlideShow from "./components/SlideShow";
+import Clup from "./components/Clup";
 
 const Animation = () => {
   const [isToggled, setToggle] = useState(false);
@@ -39,6 +40,7 @@ const Animation = () => {
         <Container>
           <h2 onClick={() => setToggle(!isToggled)}>Super Cool</h2>
           <Accordion />
+          <Clup />
           <SlideShow />
 
           <CardGrid>

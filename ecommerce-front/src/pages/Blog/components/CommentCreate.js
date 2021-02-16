@@ -5,21 +5,19 @@ import styled from "styled-components";
 const CommentCreateContainer = styled.form`
   border: 1px solid red;
 `;
-const CommentCreate = ({ commentId }) => {
+const CommentCreate = ({ postId }) => {
   const [content, setContent] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    Axios.post(`http://localhost:4001/posts/${commentId}/comments`, {
+    await Axios.post(`http://localhost:4001/posts/${postId}/comments`, {
       content,
     });
 
-    console.log(content);
     setContent("");
   };
 
-  console.log(commentId);
   return (
     <div>
       <h6>CommentCreate</h6>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation, withTranslation, Trans } from "react-i18next";
 
 import Layout from "layouts/Layout";
 import PageLayout from "layouts/PageLayout";
@@ -31,6 +32,8 @@ const hVariants = {
 
 const Home = () => {
   const dispatch = useDispatch();
+  const { t, i18n } = useTranslation();
+
   // const { searchRepo } = useActions();
   const { userName } = useSelector((state) => state.user);
 
@@ -62,11 +65,14 @@ const Home = () => {
           exit="exit"
         >
           {userName}
-          Home Page
+          <Trans i18nKey="home"></Trans>
         </motion.h3>
         <form onSubmit={handleSubmit}>
           <input placeholder={name} onChange={(e) => setName(e.target.value)} />
-          <button>Change Name</button>
+          <Trans i18nKey="home"></Trans>
+          <button>
+            <Trans i18nKey="buttonName" />
+          </button>
         </form>
         {/* <Button onClick={() => setOpenMenu((s) => !s)}>Menu</Button> */}
         {openMenu && <div>SOME</div>}

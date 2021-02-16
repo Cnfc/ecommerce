@@ -26,7 +26,7 @@ const PostList = () => {
   const [posts, setPosts] = useState({});
 
   const fetchPost = async () => {
-    const res = await Axios.get("http://localhost:4000/posts");
+    const res = await Axios.get("http://localhost:4002/posts");
     setPosts(res.data);
   };
 
@@ -36,11 +36,11 @@ const PostList = () => {
 
   const renderPosts = () => (
     <PostWrapper>
-      {Object.values(posts).map(({ id, title }) => (
+      {Object.values(posts).map(({ id, title, comments }) => (
         <div key={id}>
-          <CommentCreate commentId={id} />
+          <CommentCreate postId={id} />
           <Post>{title}</Post>
-          <CommentList commentId={id} />
+          <CommentList comments={comments} />
         </div>
       ))}
     </PostWrapper>

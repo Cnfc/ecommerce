@@ -29,4 +29,22 @@ export const links = [
     access: "all",
     id: 5,
   },
+  {
+    name: "Admin panel",
+    to: "/adminPanel",
+    access: "all",
+    id: 6,
+  },
+  {
+    name: "Apollo training",
+    to: "/apollo",
+    access: "all",
+    id: 7,
+  },
+  {
+    name: "Multilang training",
+    to: "/multilang",
+    access: "all",
+    id: 8,
+  },
 ];

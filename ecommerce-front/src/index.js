@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 
 import store from "./store/store";
-import { Provider } from "react-redux";
+import "./i18n";
 
 import App from "./App";
 import "./index.css";
