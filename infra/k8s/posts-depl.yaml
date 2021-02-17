@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+# my version
+
+kind: Deployment
+# The type of object we want to create;
+
+metadata:
+  # config options for the object we are about to create
+  name: posts-depl
+  # then the pods is created, give it a name of it ... "posts"
+  # we run only one container with the same name
+
+spec:
+  # the exact attributes we want to apply to the object we are about to create
+  replicas: 1
+  selector:
+    matchLabels:
+      app: posts
+  template:
+    metadata:
+      labels:
+        app: posts
+    spec:
+      containers:
+        - name: posts
+          image: stanislavdashkov/posts
