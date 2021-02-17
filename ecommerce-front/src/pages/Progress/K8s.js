@@ -16,6 +16,24 @@ const K8s = () => {
       <div>kubectl exec -it posts sh</div>
       <div>delete pods 'name'</div>
       <div>delete development 'name'</div>
+      <ul>
+        Types of Services:
+        <li>
+          Cluster IP : Sets up an easy-to-remember URL to access a pod. Only
+          exposes pods in the cluster
+        </li>
+        <li>
+          Node Port : Makes a pod acessible from outside the cluster. Usually
+          only used for dev purpose
+        </li>
+        <li>
+          Load Balancer: Makse a pod acessible from outside the cluster. This is
+          the right way to expose a pod to the outside world
+        </li>
+        <li>
+          External Name: Redirects an in-cluster request to a CHANGE URL.{" "}
+        </li>
+      </ul>
     </div>
   );
 };
