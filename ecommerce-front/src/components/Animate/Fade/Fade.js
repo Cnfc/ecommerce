@@ -1,7 +1,7 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-const Fade = ({ children, isActive }) => {
+const Fade = ({ children, isActive = true }) => {
   return (
     <AnimatePresence>
       {isActive && (

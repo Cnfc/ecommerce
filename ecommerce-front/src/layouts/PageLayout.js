@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Header from "components/Header/Header";
-import Header2 from "components/Header/Header2";
+import Header from "components/Header/Header4";
 import Nav from "components/Nav/Nav";
-import RightPanel from "components/RightPanel";
 
 const Content = styled.main`
   /* max-width: 800px; */
@@ -17,7 +15,7 @@ const PageLayout = ({ children }) => {
     <>
       <Content>
         {/* <Header /> */}
-        <Header2 />
+        <Header />
 
         {children}
       </Content>

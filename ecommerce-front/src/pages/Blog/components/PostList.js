@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import CommentCreate from "./CommentCreate";
 import CommentList from "./CommentList";
+import Post from "./Post";
 
 const PostContainer = styled.div``;
 
@@ -15,33 +16,33 @@ const PostWrapper = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const Post = styled.div`
-  border: 2px solid black;
-  background-color: green;
-  padding: 10px;
-  margin: 10px;
+
+const Loading = styled.div`
+  width: 30px;
+  background-color: red;
+  height: 40px;
 `;
 
 const PostList = () => {
   const [posts, setPosts] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const fetchPost = async () => {
     const res = await Axios.get("http://localhost:4002/posts");
     setPosts(res.data);
+    setLoading(false);
   };
 
   useEffect(() => {
     fetchPost();
   }, []);
 
+  // console.log(posts);
+
   const renderPosts = () => (
     <PostWrapper>
       {Object.values(posts).map(({ id, title, comments }) => (
-        <div key={id}>
-          <CommentCreate postId={id} />
-          <Post>{title}</Post>
-          <CommentList comments={comments} />
-        </div>
+        <Post key={id} id={id} title={title} comments={comments} />
       ))}
     </PostWrapper>
   );
@@ -49,6 +50,8 @@ const PostList = () => {
   return (
     <>
       <h4>PostList</h4>
+      {loading ? <Loading /> : null}
+
       <PostContainer>{renderPosts()}</PostContainer>
     </>
   );

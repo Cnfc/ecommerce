@@ -32,6 +32,7 @@ const variants = {
 };
 
 const Nav = ({ isNavOpen, setIsNavOpen }) => {
+  console.log("Nav is working");
   return (
     <MenuNav
       variants={variants}
@@ -39,7 +40,9 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
       animate={isNavOpen ? "open" : "closed"}
       transition={{ damping: 300 }}
     >
-      <button onClick={() => setIsNavOpen(false)}>Close</button>
+      <button style={{ zIndex: 10 }} onClick={() => setIsNavOpen(false)}>
+        Close
+      </button>
 
       <MenuItems />
     </MenuNav>

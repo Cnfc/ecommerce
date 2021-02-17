@@ -21,7 +21,7 @@ const CommentList = ({ comments }) => {
 
   return (
     <>
-      <ul>{renderedComments}</ul>
+      <ul style={{ cursor: "pointer" }}>{renderedComments}</ul>
     </>
   );
 };
