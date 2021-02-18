@@ -9,10 +9,13 @@ const K8s = () => {
         kubectl apply -f name.yaml - run name kube get pods - get all active
         pods
       </div>
+      <div>k rollout restart deployment name</div>
       <div> kubectl get pods</div>
+      <div> kubectl get services</div>
+      <div> kubectl get deployments</div>
       <div>logs</div>
       <div>kubectl descrive pod 'name'</div>
-      <div>kubectl descrive development 'name'</div>
+      <div>??? kubectl descrive development 'name'???</div>
       <div>kubectl exec -it posts sh</div>
       <div>delete pods 'name'</div>
       <div>delete development 'name'</div>

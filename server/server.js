@@ -12,6 +12,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 const Product = require("./models/product");
+
 // import Routes
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
@@ -42,14 +43,7 @@ mongoose
 //   debug("Morgan enabled...");
 // }
 
-// console.log("");
-// console.log("============== Config =========================");
-// console.log("Application Name:" + config.get("name"));
-// console.log("Mail Server Name:" + config.get("mail.host"));
-// console.log("Mail Password:" + config.get("mail.password"));
-// console.log("============== Config =========================");
-// console.log("");
-
+app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(expressValidator());
