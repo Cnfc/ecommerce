@@ -11,6 +11,8 @@ const cors = require("cors");
 
 require("dotenv").config();
 
+const { value } = require("./data");
+
 const Product = require("./models/product");
 
 // import Routes
@@ -58,11 +60,14 @@ app.use("/api", productRoutes);
 
 app.use("/api", logRouter);
 
-//
-app.use("/", (req, res) => {
-  res.send("Its main page");
+app.get("/odata/tasks", (req, res) => {
+  console.log(value);
+  res.status(200).send(value);
 });
 
+app.use("/", (req, res) => {
+  res.send("Its main page and its");
+});
 // =============================================
 const port = process.env.PORT || 8100;
 

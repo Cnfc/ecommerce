@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+# my version
+
+kind: Deployment
+# The type of object we want to create;
+
+metadata:
+  # config options for the object we are about to create
+  name: moderation-depl
+  # then the pods is created, give it a name of it ... "posts"
+  # we run only one container with the same name
+
+spec:
+  # the exact attributes we want to apply to the object we are about to create
+  replicas: 1
+  selector:
+    matchLabels:
+      app: moderation
+  template:
+    metadata:
+      labels:
+        app: moderation
+    spec:
+      containers:
+        - name: moderation
+          image: stanislavdashkov/moderation
+---
+apiVersion: v1 #my version
+kind: Service #The type of object we want to create;
+metadata: #config options for the object we are about to create
+  name: moderation-srv
+spec:
+  type: ClusterIP #get ClusterIp by default
+  selector:
+    app: moderation
+  ports:
+    - name: moderation
+      protocol: TCP
+      port: 4003
+      targetPort: 4003

@@ -10,6 +10,7 @@ import Progress from "pages/Progress";
 import AdminPanel from "pages/AdminPanel";
 import Apollo from "pages/Apollo";
 import Multilang from "pages/Multilang";
+import So from "pages/So";
 
 import Spinner from "components/Spinner";
 // import SignUp from "./web/pages/user/SignUp";
@@ -38,6 +39,7 @@ const Routers = () => {
             <Route path="/adminPanel" exact component={AdminPanel} />
             <Route path="/apollo" exact component={Apollo} />
             <Route path="/multilang" exact component={Multilang} />
+            <Route path="/so" exact component={So} />
 
             {/* <Route path="/signin" exact component={SignIn} />
         <Route path="/signup" exact component={SignUp} />

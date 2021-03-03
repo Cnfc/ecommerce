@@ -18,7 +18,6 @@ const Apollo = () => {
     fetchGraphql();
   }, []);
 
-  console.log(data, isLoading, networkStatus, stale, isError);
   return (
     <PageLayout>
       <div>Appolo Test</div>

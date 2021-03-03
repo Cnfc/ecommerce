@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import Header from "components/Header/Header4";
-import Nav from "components/Nav/Nav";
+import Header from "./Header";
 
-const Content = styled.main`
+const Content = styled.header`
   /* max-width: 800px; */
-  margin: 60px auto 0 auto;
+  /* margin: 15px auto 0 auto; */
+  /* margin: 0 10rem; */
   /* padding: 0 16px; */
   font-family: "Kaushan Script";
 `;
@@ -14,9 +14,7 @@ const PageLayout = ({ children }) => {
   return (
     <>
       <Content>
-        {/* <Header /> */}
         <Header />
-
         {children}
       </Content>
     </>

@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const { randomBytes } = require("crypto");
 const axios = require("axios");
 const cors = require("cors");
-
+const time = require("./assets/time").time;
 // const requirePost = require("./routes/posts");
 // const receivedEvent = require("./routes/eventBus");
 
@@ -24,11 +24,14 @@ const Url = "http://event-bus-srv:4005/events";
 app.post("/posts", async (req, res) => {
   const { title } = req.body;
   const id = randomBytes(8).toString("hex");
+  const currentTime = time();
 
   posts[id] = {
     id,
     title,
+    currentTime,
   };
+
   console.log(posts);
 
   await axios.post(Url, {

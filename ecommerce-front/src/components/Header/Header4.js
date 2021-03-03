@@ -51,6 +51,7 @@ const HeaderWrapper = styled.header`
     ${(p) => p.theme.secondaryColor}
   );
   border-bottom: 3px solid ${(p) => p.theme.secondaryColor};
+  z-index: 10;
 `;
 
 const Menu = styled(motion.nav)`

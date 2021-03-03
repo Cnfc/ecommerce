@@ -4,8 +4,10 @@ import { combineReducers } from "redux";
 // import vacations from 'containers/VacationsContainer/meta/reducer';
 // import profile from 'containers/ProfileContainer/meta/reducer';
 import { userReducer, graphQlReducer } from "pages/Apollo/meta/reducer";
+import formReducer from "pages/So/meta/reducer";
 
 export default combineReducers({
   user: userReducer,
   uri: graphQlReducer,
+  form: formReducer,
 });

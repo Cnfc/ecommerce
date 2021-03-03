@@ -5,10 +5,10 @@ import { useTranslation, withTranslation, Trans } from "react-i18next";
 
 import Layout from "layouts/Layout";
 import PageLayout from "layouts/PageLayout";
-import { Button } from "@material-ui/core";
 import Nav from "components/Nav/Nav";
 import MenuItems from "components/Header/MenuItems";
 import { changeUser } from "pages/Apollo/meta/actions";
+import Button from "components/Button";
 
 const variants = {
   initial: { opacity: 0 },
@@ -76,7 +76,7 @@ const Home = () => {
         </form>
         {/* <Button onClick={() => setOpenMenu((s) => !s)}>Menu</Button> */}
         {openMenu && <div>SOME</div>}
-        sad
+        <Button></Button>
       </PageLayout>
     </motion.div>
   );

@@ -47,4 +47,10 @@ export const links = [
     access: "all",
     id: 8,
   },
+  {
+    name: "So",
+    to: "/so",
+    access: "all",
+    id: 9,
+  },
 ];
