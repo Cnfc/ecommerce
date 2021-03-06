@@ -14,7 +14,7 @@ const PostCreate = () => {
     console.log(title);
 
     if (title.length > 3) {
-      Axios.post("http://localhost:4000/posts", { title });
+      Axios.post("http://my-app.org/posts", { title });
     }
     setTitle("");
   };

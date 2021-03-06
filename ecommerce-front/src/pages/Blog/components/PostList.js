@@ -28,7 +28,7 @@ const PostList = () => {
   const [loading, setLoading] = useState(true);
 
   const fetchPost = async () => {
-    const res = await Axios.get("http://localhost:4002/posts");
+    const res = await Axios.get("http://my-app.org/posts");
     setPosts(res.data);
     setLoading(false);
   };

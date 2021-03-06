@@ -11,7 +11,7 @@ const CommentCreate = ({ postId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await Axios.post(`http://localhost:4001/posts/${postId}/comments`, {
+    await Axios.post(`http://my-app.org/posts/${postId}/comments`, {
       content,
     });
 

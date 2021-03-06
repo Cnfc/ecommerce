@@ -25,7 +25,7 @@ spec:
         - name: event-bus
           image: stanislavdashkov/event-bus
 ---
-apiVersion: v1 #my version
+apiVersion: v1 #my version && create SERVICE
 kind: Service #The type of object we want to create;
 metadata: #config options for the object we are about to create
   name: event-bus-srv
