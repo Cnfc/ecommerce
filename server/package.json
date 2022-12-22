@@ -33,7 +33,7 @@
     "formidable": "^1.2.2",
     "helmet": "^4.0.0",
     "joi": "^17.1.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "lodash": "^4.17.15",
     "mongoose": "^5.9.15",
     "morgan": "^1.10.0",
